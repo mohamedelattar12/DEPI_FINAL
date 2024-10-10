@@ -9,7 +9,7 @@ import pages.ViewCartPage;
 
 import java.time.Duration;
 
-public class AddFirstItemToTheCartTest {
+public class AddProductsToTheCartTest {
     Driver driver;
 
     @BeforeClass
@@ -17,7 +17,6 @@ public class AddFirstItemToTheCartTest {
         driver = new Driver("CHROME");
         driver.browser().navigateToURL("https://automationexercise.com/");
         driver.browser().maximizeWindows();
-        driver.browser().scrollToBottom();
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
@@ -25,15 +24,16 @@ public class AddFirstItemToTheCartTest {
     public void hoverOnFirstItemAndAddedToCart() {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
-                .hoverOnFirstItem()
+                .clickOnProductsLink()
+                .hoverOnFirstProduct()
                 .clickOnFirstAddToCartButton()
-                .clickOnViewCartButton();
-    }
+                .clickOnContinueShoppingButton()
+                .hoverOnSecondProduct()
+                .clickOnSecondProductAddToCartButton()
+                .clickOnViewCartButton()
+                .checkThatViewCartPageIsLoadedSuccessfully()
+                .checkThatFirstAndSecondProductsAreAddedSuccessfully();
 
-    @Test(dependsOnMethods = "hoverOnFirstItemAndAddedToCart", priority = 2)
-    public void userCanViewCartSuccessfully() {
-        new ViewCartPage(driver)
-                .checkThatViewCartPageIsLoadedSuccessfully();
     }
 
     @AfterClass

@@ -2,8 +2,9 @@ package pages;
 
 import driverFactory.Driver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+
+import java.time.Duration;
 
 public class ProductsPage {
     private Driver driver;
@@ -14,6 +15,15 @@ public class ProductsPage {
     By productSearchbar = By.id("search_product");
     By productSearchButton = By.id("submit_search");
     By searchedProductTitle = By.xpath("//h2[@class=\"title text-center\"]");
+    By hoverOnFirstProductLink = By.xpath("(//div[@class=\"overlay-content\"])[1]");
+    By clickOnFirstProductAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
+    By continueShoppingButton = By.xpath("//button[@data-dismiss=\"modal\"]");
+    By hoverOnSecondProductLink = By.xpath("(//div[@class=\"overlay-content\"])[2]");
+    By clickOnSecondProductAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[3]");
+    By viewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
+
+
+
 
 
     public ProductsPage(Driver driver) {
@@ -38,6 +48,7 @@ public class ProductsPage {
     }
 
 
+
     /*********************************  Actions  *****************************************************/
 
     public FirstProductPage clickOnFirstProduct() {
@@ -55,4 +66,33 @@ public class ProductsPage {
         return this;
     }
 
+    public ProductsPage hoverOnFirstProduct() {
+        driver.element().hoverOnItem(hoverOnFirstProductLink);
+        return this;
+    }
+
+    public ProductsPage hoverOnSecondProduct() {
+        driver.element().hoverOnItem(hoverOnSecondProductLink);
+        return this;
+    }
+
+    public ProductsPage clickOnFirstAddToCartButton() {
+        driver.element().click(clickOnFirstProductAddToCartButton);
+        return this;
+    }
+
+    public ProductsPage clickOnContinueShoppingButton() {
+        driver.element().click(continueShoppingButton);
+        return this;
+    }
+
+    public ProductsPage clickOnSecondProductAddToCartButton() {
+        driver.element().click(clickOnSecondProductAddToCartButton);
+        return this;
+    }
+
+    public ViewCartPage clickOnViewCartButton() {
+        driver.element().click(viewCart);
+        return new ViewCartPage(driver);
+    }
 }
