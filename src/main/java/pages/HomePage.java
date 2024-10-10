@@ -19,10 +19,15 @@ public class HomePage {
     By clickAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
     By viewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
     By subscriptionTitle = By.xpath("//div[@class=\"single-widget\"]/h2");
-    By emailField = By.id("susbscribe_email");
+    By emailField = By.id("subscribe_email");
     By submitEmailButton = By.id("subscribe");
     By SuccessMessage = By.id("success-subscribe");
     By footer = By.id("footer");
+    By viewProduct = By.xpath("//a[@href=\"/product_details/1\"]");
+    By loggedInAsUser = By.xpath("//b");
+    By cartBtn = By.xpath("(//a[@href=\"/view_cart\"])[1]");
+    By signupLoginBtn = By.xpath("//a[@href=\"/login\"]");
+
 
     public HomePage(Driver driver) {
         this.driver = driver;
@@ -60,6 +65,11 @@ public class HomePage {
         Assert.assertEquals(driver.element().getTextOf(SuccessMessage), "You have been successfully subscribed!");
         return this;
     }
+    public HomePage checkThatLoggedInAsUsernameIsDisplayed() {
+        Assert.assertTrue(driver.element().isDisplayed(loggedInAsUser));
+        return this;
+    }
+
 
     /*********************************  Actions  *****************************************************/
 
@@ -117,4 +127,19 @@ public class HomePage {
         driver.element().click(submitEmailButton);
         return this;
     }
+    public FirstProductPage clickOnViewProductButton() {
+        driver.element().click(viewProduct);
+        return new FirstProductPage(driver);
+    }
+
+
+    public ViewCartPage clickOnCartBtn() {
+        driver.element().click(cartBtn);
+        return new ViewCartPage(driver);
+    }
+    public LoginSignupPage clickOnLoginSignupBtn() {
+        driver.element().click(signupLoginBtn);
+        return new LoginSignupPage(driver);
+    }
+
 }

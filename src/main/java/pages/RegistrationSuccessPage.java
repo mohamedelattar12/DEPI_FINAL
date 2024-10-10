@@ -14,6 +14,7 @@ public class RegistrationSuccessPage {
     private WebDriverWait wait;
 
     By accountCreated = By.xpath("//h2[@data-qa=\"account-created\"]");
+    By continueBtn = By.xpath("//a[@data-qa=\"continue-button\"]");
 
     public RegistrationSuccessPage(Driver driver) {
         this.driver = driver;
@@ -22,7 +23,7 @@ public class RegistrationSuccessPage {
 
     /*********************************  Assertions  *****************************************************/
 
-    public void checkThatSuccessMessageShouldBeDisplayed() {
+    public RegistrationSuccessPage checkThatSuccessMessageShouldBeDisplayed() {
 //        wait.until(ExpectedConditions.urlContains("/account_created"));
         wait.until(ExpectedConditions.visibilityOf(driver.get().findElement(accountCreated)));
 
@@ -30,7 +31,13 @@ public class RegistrationSuccessPage {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/account_created"));
         Assert.assertEquals(driver.element().getTextOf(accountCreated)
                 , "ACCOUNT CREATED!");
+        return this;
     }
+    /*********************************  Actions  *****************************************************/
 
+    public HomePage clickOnContinueBtn (){
+        driver.element().click(continueBtn);
+        return new HomePage(driver);
+    }
 
 }

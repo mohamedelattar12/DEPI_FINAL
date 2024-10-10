@@ -14,6 +14,9 @@ public class FirstProductPage {
     By availability = By.xpath("(//P)[4]");
     By condition = By.xpath("(//P)[5]");
     By brand = By.xpath("(//P)[6]");
+    By quantity = By.xpath("//input[@id=\"quantity\"]");
+    By addToCartBtn= By.xpath("//button[@class=\"btn btn-default cart\"]");
+    By viewCartBtn= By.xpath("(//a[@href=\"/view_cart\"])[2]");
 
     public FirstProductPage(Driver driver) {
         this.driver = driver;
@@ -30,6 +33,20 @@ public class FirstProductPage {
         driver.element().isDisplayed(brand);
 
         return this;
+    }
+    /*********************************  Actions  *****************************************************/
+
+    public FirstProductPage IncreaseProductQuantity() {
+        driver.element().fillField(quantity, "4");
+        return this;
+    }
+    public FirstProductPage ClickOnAddToCartbtn() {
+        driver.element().click(addToCartBtn);
+        return this;
+    }
+    public ViewCartPage ClickOnViewCartBtn() {
+        driver.element().click(viewCartBtn);
+        return new ViewCartPage(driver);
     }
 
 }
