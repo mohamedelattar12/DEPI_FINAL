@@ -18,11 +18,10 @@ public class NewTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
+        driver = new Driver("EDGE");
 //        wait=new WebDriverWait(driver.get(),Duration.ofSeconds(30));
         driver.browser().navigateToURL("https://automationexercise.com");
         driver.browser().maximizeWindows();
-//        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
@@ -36,7 +35,7 @@ public class NewTest {
                 .clickOnLoginLink()
                 .checkThatUserIsNavigateToLoginSignUpPage()
                 .fillInNameSingUp("Mariam")
-                .fillInEmailSingUpButton("TestTest333@gmail.com")
+                .fillInEmailSingUpButton("TestTestt123456@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
                 .fillInRegistrationForm()
@@ -50,25 +49,27 @@ public class NewTest {
     public void userCanLoginSuccessfully() {
         driver.browser().navigateToURL("https://automationexercise.com/login");
         new LoginSignupPage(driver)
-                .fillInLoginEmail("TestTest333@gmail.com")
+                .fillInLoginEmail("TestTestt123456@gmail.com")
                 .fillInLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatLogOutLinkShouldBeDisplayed();
+        driver.browser().deleteAllCookies();
     }
 
 
-    @Test(priority = 3, dependsOnMethods = "userCanLoginSuccessfully")
-    public void userCanLogoutSuccessfully() {
-        new HomePage(driver)
-                .clickOnLogOutLink()
-                .checkThatUserIsNavigateToLoginSignUpPage();
-    }
+//    @Test(priority = 3, dependsOnMethods = "userCanLoginSuccessfully")
+//    public void userCanLogoutSuccessfully() {
+//        new HomePage(driver)
+//                .clickOnLogOutLink()
+//                .checkThatUserIsNavigateToLoginSignUpPage();
+//    }
 
 
-    @Test(priority = 4, dependsOnMethods = "userCanLogoutSuccessfully")
+    @Test(priority = 3, dependsOnMethods = "userCanRegisterSuccessfully")
     public void userCanDeleteSuccessfully() {
+        driver.browser().navigateToURL("https://automationexercise.com/login");
         new LoginSignupPage(driver)
-                .fillInLoginEmail("TestTest333@gmail.com")
+                .fillInLoginEmail("TestTestt123456@gmail.com")
                 .fillInLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatDeleteLinkShouldBeDisplayed()

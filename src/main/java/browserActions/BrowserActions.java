@@ -87,8 +87,5 @@ public class BrowserActions {
         return this;
     }
 
-    public BrowserActions scrollToAmount(int width, int height) {
-        new Actions(driver).scrollByAmount(width, height).build().perform();
-        return this;
-    }
+
 }
