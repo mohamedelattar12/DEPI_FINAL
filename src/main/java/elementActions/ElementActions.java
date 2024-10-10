@@ -34,6 +34,13 @@ public class ElementActions {
         return this;
     }
 
+    public ElementActions searchBar(By locator, String text) {
+        clearFiled(locator);
+        System.out.println("Search for" + locator.toString());
+        driver.findElement(locator).sendKeys(text);
+        return this;
+    }
+
     public ElementActions clearFiled(By locator) {
         System.out.println("Clear field with locator " + locator.toString());
         driver.findElement(locator).clear();
@@ -72,8 +79,8 @@ public class ElementActions {
         return this;
     }
 
-    public ElementActions hoverOnItem(By locator){
-       new Actions(driver).moveToElement(driver.findElement(locator)).click().build().perform();
+    public ElementActions hoverOnItem(By locator) {
+        new Actions(driver).moveToElement(driver.findElement(locator)).click().build().perform();
         return this;
     }
 
