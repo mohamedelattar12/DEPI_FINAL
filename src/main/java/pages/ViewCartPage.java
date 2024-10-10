@@ -9,10 +9,9 @@ public class ViewCartPage {
     private Driver driver;
 
     By productsTable = By.xpath("//div[@id=\"cart_info\"]");
-<<<<<<< HEAD
+
     By proceedToCheckOut = By.cssSelector("a.check_out");
     By registerLogin = By.xpath("(//a[@href=\"/login\"])[2]");
-=======
     By firstProductName = By.xpath("//a[@href=\"/product_details/1\"]");
     By firstProductPrice = By.xpath("(//td[@class=\"cart_price\"]/p)[1]");
     By firstProductQuantity = By.xpath("(//td[@class=\"cart_quantity\"]/button)[1]");
@@ -27,7 +26,7 @@ public class ViewCartPage {
     By submitEmailButton = By.id("subscribe");
     By SuccessMessage = By.id("success-subscribe");
 
->>>>>>> e42a9a79d0ade096d5fcd6ebeadf6cf2fa875a11
+
 
     public ViewCartPage(Driver driver) {
         this.driver = driver;
@@ -41,7 +40,7 @@ public class ViewCartPage {
         return this;
     }
 
-<<<<<<< HEAD
+
 
     /**********************************  Actions  ****************************************/
 
@@ -62,7 +61,7 @@ public class ViewCartPage {
 
 
 
-=======
+
     public ViewCartPage checkThatFirstAndSecondProductsAreAddedSuccessfully() {
         Assert.assertTrue(driver.element().isDisplayed(firstProductName));
         Assert.assertTrue(driver.element().isDisplayed(secondProductName));
@@ -106,5 +105,5 @@ public class ViewCartPage {
         driver.element().click(submitEmailButton);
         return this;
     }
->>>>>>> e42a9a79d0ade096d5fcd6ebeadf6cf2fa875a11
+
 }

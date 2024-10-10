@@ -15,21 +15,20 @@ public class HomePage {
     By contactUsLink = By.xpath("//a[@href=\"/contact_us\"]");
     By testCaseLink = By.xpath("(//a[@href=\"/test_cases\"])[1]");
     By productsLink = By.xpath("//a[@href=\"/products\"]");
-<<<<<<< HEAD
+
     By hoverLink=By.xpath("(//div[@class=\"overlay-content\"])[1]");
     By clickAddToCartButton =By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
     By viewCart=By.xpath("(//a[@href=\"/view_cart\"])[2]");
     By continueShopping = By.cssSelector("button.close-modal");
-=======
+
     By hoverOnFirstProductLink = By.xpath("(//div[@class=\"overlay-content\"])[1]");
     By clickOnFirstProductAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
-    By viewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
     By subscriptionTitle = By.xpath("//div[@class=\"single-widget\"]/h2");
     By emailField = By.id("susbscribe_email");
     By submitEmailButton = By.id("subscribe");
     By SuccessMessage = By.id("success-subscribe");
     By footer = By.id("footer");
->>>>>>> e42a9a79d0ade096d5fcd6ebeadf6cf2fa875a11
+
     By cartLink = By.xpath("(//a[@href=\"/view_cart\"])[1]");
 
     public HomePage(Driver driver) {
@@ -116,7 +115,7 @@ public class HomePage {
         return new ViewCartPage(driver);
     }
 
-<<<<<<< HEAD
+
     public HomePage clickOnContinueShoppingButton(){
         driver.element().click(continueShopping);
         return this;
@@ -127,20 +126,16 @@ public class HomePage {
         return new ViewCartPage(driver);
     }
 
-=======
+
     public HomePage fillEmailField(String email) {
         driver.element().fillField(emailField, email);
         return this;
     }
->>>>>>> e42a9a79d0ade096d5fcd6ebeadf6cf2fa875a11
+
 
     public HomePage clickOnArrowButton() {
         driver.element().click(submitEmailButton);
         return this;
     }
 
-    public ViewCartPage clickOnCartLink() {
-        driver.element().click(cartLink);
-        return new ViewCartPage(driver);
-    }
 }
