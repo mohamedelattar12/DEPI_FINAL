@@ -184,26 +184,7 @@ public class WebDriverListener implements org.openqa.selenium.support.events.Web
         } else {
             return "\"" + accessibleName + "\"";
         }
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

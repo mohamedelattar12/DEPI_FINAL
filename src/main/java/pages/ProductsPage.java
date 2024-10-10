@@ -8,13 +8,12 @@ import org.testng.Assert;
 public class ProductsPage {
     private Driver driver;
 
-    By productsList = By.xpath("//div[@class=\"features_items\"]");
+
     By productsTitle = By.xpath("//h2[@class=\"title text-center\"]");
     By firstProductLink = By.xpath("//a[@href=\"/product_details/1\"]");
     By productSearchbar = By.id("search_product");
     By productSearchButton = By.id("submit_search");
-    By searchedProductTitle=By.xpath("//h2[@class=\"title text-center\"]");
-
+    By searchedProductTitle = By.xpath("//h2[@class=\"title text-center\"]");
 
 
     public ProductsPage(Driver driver) {
@@ -32,10 +31,12 @@ public class ProductsPage {
 
     public ProductsPage checkThatSearchedProductIsLoadedSuccessfully() {
         Assert.assertTrue(driver.element().isDisplayed(searchedProductTitle));
-        Assert.assertEquals(driver.element().getTextOf(searchedProductTitle),"SEARCHED PRODUCTS");
+        Assert.assertEquals(driver.element().getTextOf(searchedProductTitle), "SEARCHED PRODUCTS");
+        Assert.assertTrue(driver.browser().getCurrentURL().contains("/products?search="));
 
         return this;
     }
+
 
     /*********************************  Actions  *****************************************************/
 

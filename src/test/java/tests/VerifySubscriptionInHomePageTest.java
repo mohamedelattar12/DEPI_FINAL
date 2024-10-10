@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
-public class SearchForProducts {
+public class VerifySubscriptionInHomePageTest {
     public Driver driver;
 
     @BeforeClass
@@ -18,12 +18,12 @@ public class SearchForProducts {
 
     @Test
     public void checkThatUserCanSearchForProduct(){
-        new HomePage(driver).checkThatHomePageIsLoadedSuccessfully()
-                .clickOnProductsLink()
-                .checkThatProductsPageIsLoadedSuccessfully()
-                .searchForProduct("Blue Top")
-                .clickOnSearchButton()
-                .checkThatSearchedProductIsLoadedSuccessfully();
+        new HomePage(driver)
+                .checkThatHomePageIsLoadedSuccessfully()
+                .checkThatSubscriptionIsvIsVisible()
+                .fillEmailField("TestTest333@gmail.com")
+                .clickOnEmailSubscriptionButton()
+                .checkThatSuccessMessageDisplayedSuccessfully();
     }
 
 
@@ -34,4 +34,5 @@ public class SearchForProducts {
 
 
     }
+
 }

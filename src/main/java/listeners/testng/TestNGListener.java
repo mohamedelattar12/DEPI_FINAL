@@ -73,7 +73,6 @@ public class TestNGListener implements ITestListener, IExecutionListener {
         ScreenShotManager.CaptureScreenShot(driver.get(), result.getName());
 
 
-//        ScreenShotManager.CaptureScreenShot(Driver.get(), result.getName());
         System.out.println("*********** failure of Test: " + result.getName() + " *************");
 
 

@@ -15,9 +15,14 @@ public class HomePage {
     By contactUsLink = By.xpath("//a[@href=\"/contact_us\"]");
     By testCaseLink = By.xpath("(//a[@href=\"/test_cases\"])[1]");
     By productsLink = By.xpath("//a[@href=\"/products\"]");
-    By hoverLink=By.xpath("(//div[@class=\"overlay-content\"])[1]");
-    By clickAddToCartButton =By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
-    By viewCart=By.xpath("(//a[@href=\"/view_cart\"])[2]");
+    By hoverLink = By.xpath("(//div[@class=\"overlay-content\"])[1]");
+    By clickAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
+    By viewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
+    By subscriptionTitle = By.xpath("//div[@class=\"single-widget\"]/h2");
+    By emailField = By.id("susbscribe_email");
+    By submitEmailButton = By.id("subscribe");
+    By SuccessMessage = By.id("success-subscribe");
+    By footer = By.id("footer");
 
     public HomePage(Driver driver) {
         this.driver = driver;
@@ -42,6 +47,17 @@ public class HomePage {
 
     public HomePage checkThatHomePageIsLoadedSuccessfully() {
         Assert.assertEquals(driver.browser().getCurrentURL(), "https://automationexercise.com/");
+        return this;
+    }
+
+    public HomePage checkThatSubscriptionIsvIsVisible() {
+        driver.element().scrollToElement(footer);
+        Assert.assertTrue(driver.element().isDisplayed(subscriptionTitle));
+        return this;
+    }
+
+    public HomePage checkThatSuccessMessageDisplayedSuccessfully() {
+        Assert.assertEquals(driver.element().getTextOf(SuccessMessage), "You have been successfully subscribed!");
         return this;
     }
 
@@ -77,20 +93,28 @@ public class HomePage {
         return new ProductsPage(driver);
     }
 
-    public HomePage hoverOnFirstItem(){
+    public HomePage hoverOnFirstItem() {
         driver.element().hoverOnItem(hoverLink);
         return this;
     }
 
-    public HomePage clickOnFirstAddToCartButton(){
+    public HomePage clickOnFirstAddToCartButton() {
         driver.element().click(clickAddToCartButton);
         return this;
     }
 
-    public ViewCartPage clickOnViewCartButton(){
+    public ViewCartPage clickOnViewCartButton() {
         driver.element().click(viewCart);
         return new ViewCartPage(driver);
     }
 
+    public HomePage fillEmailField(String email) {
+        driver.element().fillField(emailField, email);
+        return this;
+    }
 
+    public HomePage clickOnEmailSubscriptionButton() {
+        driver.element().click(submitEmailButton);
+        return this;
+    }
 }

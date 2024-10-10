@@ -2,11 +2,13 @@ package elementActions;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ElementActions {
 
@@ -29,14 +31,14 @@ public class ElementActions {
 
     public ElementActions fillField(By locator, String text) {
         clearFiled(locator);
-        System.out.println("Fill field  " + locator.toString() + " with " + text);
+      System.out.println("Fill field  " + locator.toString() + " with " + text);
         driver.findElement(locator).sendKeys(text);
         return this;
     }
 
     public ElementActions searchBar(By locator, String text) {
         clearFiled(locator);
-        System.out.println("Search for" + locator.toString());
+        System.out.println("Type \"" +text+ "\" into "+"\" Search Product\".");
         driver.findElement(locator).sendKeys(text);
         return this;
     }
