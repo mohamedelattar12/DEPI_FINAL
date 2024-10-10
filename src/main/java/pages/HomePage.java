@@ -18,6 +18,8 @@ public class HomePage {
     By hoverLink=By.xpath("(//div[@class=\"overlay-content\"])[1]");
     By clickAddToCartButton =By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
     By viewCart=By.xpath("(//a[@href=\"/view_cart\"])[2]");
+    By continueShopping = By.cssSelector("button.close-modal");
+    By cartLink = By.xpath("(//a[@href=\"/view_cart\"])[1]");
 
     public HomePage(Driver driver) {
         this.driver = driver;
@@ -89,6 +91,16 @@ public class HomePage {
 
     public ViewCartPage clickOnViewCartButton(){
         driver.element().click(viewCart);
+        return new ViewCartPage(driver);
+    }
+
+    public HomePage clickOnContinueShoppingButton(){
+        driver.element().click(continueShopping);
+        return this;
+    }
+
+    public ViewCartPage clickOnCartLink(){
+        driver.element().click(cartLink);
         return new ViewCartPage(driver);
     }
 
