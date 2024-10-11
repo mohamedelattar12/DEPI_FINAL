@@ -12,7 +12,7 @@ import java.time.Duration;
 
 
 public class NewTest {
-    Driver driver;
+   public Driver driver;
     WebDriverWait wait;
 
 

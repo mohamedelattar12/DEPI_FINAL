@@ -9,7 +9,7 @@ import pages.HomePage;
 import java.time.Duration;
 
 public class AddProductsToTheCartTest {
-    Driver driver;
+   public Driver driver;
 
     @BeforeClass
     public void setUp() {
