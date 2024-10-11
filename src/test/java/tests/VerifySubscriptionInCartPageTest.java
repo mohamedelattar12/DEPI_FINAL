@@ -6,33 +6,31 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
-public class VerifySubscriptionInHomePageTest {
+
+public class VerifySubscriptionInCartPageTest {
     public Driver driver;
 
     @BeforeClass
     public void setUp() {
         driver = new Driver("CHROME");
+        driver.browser().navigateToURL("https://automationexercise.com/");
         driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com");
     }
 
     @Test
-    public void checkThatUserCanSearchForProduct() {
+    public void checkThatUserCanSubscribeFromHomePage(){
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
-                .checkThatSubscriptionIsvIsVisible()
-                .fillEmailField("Test1Test333@gmail.com")
-                .clickOnEmailSubscriptionButton()
-                .checkThatSuccessMessageDisplayedSuccessfully();
+                .clickOnCartLink()
+                .checkSubscriptionIsVisibleInCartPage()
+                .fillEmailField("TestTest333@gmail.com")
+                .clickOnEmailArrowButton()
+                .checkThatSuccessMessageIsSuccessfullyDisplayed();
     }
-
 
     @AfterClass
     public void tearDown() {
         driver.browser().deleteAllCookies();
         driver.quit();
-
-
     }
-
 }

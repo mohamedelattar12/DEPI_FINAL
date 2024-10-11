@@ -5,10 +5,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.PaymentPage;
-import pages.PaymentSuccessPage;
-
-import java.time.Duration;
 
 public class RegisterWhileCheckout {
     public Driver driver;
@@ -28,7 +24,7 @@ public class RegisterWhileCheckout {
                 clickOnProceedToCheckOut().clickOnRegisterLoginBtn().fillInNameSingUp("esraa")
                 .fillInEmailSingUpButton("esraf123@gmail.com").clickOnSignUpButton().fillInRegistrationForm()
                 .clickOnCreateAccount().checkThatSuccessMessageShouldBeDisplayed().
-                clickOnContinueBtn().checkThatLoggedInAsUsernameIsDisplayed().clickOnCartBtn()
+                clickOnContinueBtn().checkThatLoggedInAsUsernameIsDisplayed().clickOnCartLink()
                 .clickonproceedtocheckoutbtn().CheckAddressDetailsIsDisplayed().CheckReviewOrderIsDisplayed()
                 .fillInTextArea().clickOnPlaceOrderBtn().fillPaymentForm().clickOnPayAndConfirmBtn().
                 checkSuccessMessageIsDisplayed().clickOnDeleteAccountBtn().

@@ -23,7 +23,7 @@ public class RegisterBeforeCheckout {
                .clickOnSignUpButton().checkThatRegistrationPageIsLoadedSuccessfully()
                .fillInRegistrationForm().clickOnCreateAccount().checkThatSuccessMessageShouldBeDisplayed()
                .clickOnContinueBtn().checkThatLoggedInAsUsernameIsDisplayed().clickOnFirstAddToCartButton()
-               .clickOnCartBtn().checkThatViewCartPageIsLoadedSuccessfully()
+               .clickOnCartLink().checkThatViewCartPageIsLoadedSuccessfully()
                .clickonproceedtocheckoutbtn().CheckAddressDetailsIsDisplayed().CheckReviewOrderIsDisplayed()
                .fillInTextArea().clickOnPlaceOrderBtn().fillPaymentForm().
                clickOnPayAndConfirmBtn().checkSuccessMessageIsDisplayed().clickOnDeleteAccountBtn()
