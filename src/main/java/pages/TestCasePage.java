@@ -19,6 +19,6 @@ public class TestCasePage {
     public void checkThatTestCasePageIsLoadedSuccessfully(){
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/test_cases"));
         Assert.assertTrue(driver.element().isDisplayed(testCaseTitle));
-        Assert.assertEquals(driver.element().getTextOf(testCaseTitle),"TEST CASES");
+        Assert.assertEquals(driver.element().getTextOf(testCaseTitle)," TEST CASES");
     }
 }

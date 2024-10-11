@@ -36,7 +36,7 @@ public class NewTest {
                 .clickOnLoginLink()
                 .checkThatUserIsNavigateToLoginSignUpPage()
                 .fillInNameSingUp("Mariam")
-                .fillInEmailSingUpButton("Test1Test333@gmail.com")
+                .fillInEmailSingUpButton("Test1223Test333@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
                 .fillInRegistrationForm()
@@ -50,7 +50,7 @@ public class NewTest {
     public void userCanLoginSuccessfully() {
         driver.browser().navigateToURL("https://automationexercise.com/login");
         new LoginSignupPage(driver)
-                .fillInLoginEmail("TestTest333@gmail.com")
+                .fillInLoginEmail("Test1223Test333@gmail.com")
                 .fillInLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatLogOutLinkShouldBeDisplayed();
@@ -68,7 +68,7 @@ public class NewTest {
     @Test(priority = 4, dependsOnMethods = "userCanLogoutSuccessfully")
     public void userCanDeleteSuccessfully() {
         new LoginSignupPage(driver)
-                .fillInLoginEmail("TestTest333@gmail.com")
+                .fillInLoginEmail("Test1223Test333@gmail.com")
                 .fillInLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatDeleteLinkShouldBeDisplayed()
