@@ -21,7 +21,7 @@ public class VerifySubscriptionInHomePageTest {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
                 .checkThatSubscriptionIsvIsVisible()
-                .fillEmailField("TestTest333@gmail.com")
+                .fillEmailField("Test1Test333@gmail.com")
                 .clickOnEmailSubscriptionButton()
                 .checkThatSuccessMessageDisplayedSuccessfully();
     }
@@ -30,7 +30,7 @@ public class VerifySubscriptionInHomePageTest {
     @AfterClass
     public void tearDown() {
         driver.browser().deleteAllCookies();
-        driver.quit();
+       // driver.quit();
 
 
     }

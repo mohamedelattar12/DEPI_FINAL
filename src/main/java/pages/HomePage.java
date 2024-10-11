@@ -19,7 +19,7 @@ public class HomePage {
     By clickAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
     By viewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
     By subscriptionTitle = By.xpath("//div[@class=\"single-widget\"]/h2");
-    By emailField = By.id("subscribe_email");
+    By emailField = By.id("susbscribe_email");
     By submitEmailButton = By.id("subscribe");
     By SuccessMessage = By.id("success-subscribe");
     By footer = By.id("footer");
