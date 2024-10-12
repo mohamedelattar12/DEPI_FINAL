@@ -21,6 +21,7 @@ public class ProductsPage {
     By hoverOnSecondProductLink = By.xpath("(//div[@class=\"overlay-content\"])[2]");
     By clickOnSecondProductAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[3]");
     By viewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
+    By viewProduct = By.xpath("//a[@href=\"/product_details/1\"]");
 
 
     public ProductsPage(Driver driver) {
@@ -96,6 +97,11 @@ public class ProductsPage {
     public ViewCartPage clickOnViewCartButton() {
         driver.element().click(viewCart);
         return new ViewCartPage(driver);
+    }
+
+    public FirstProductPage clickOnViewProductButton() {
+        driver.element().click(viewProduct);
+        return new FirstProductPage(driver);
     }
 }
 

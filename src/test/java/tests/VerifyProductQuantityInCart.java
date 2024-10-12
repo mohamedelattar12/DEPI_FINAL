@@ -21,7 +21,7 @@ public class VerifyProductQuantityInCart {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully().clickOnViewProductButton().
                 checkThatUseNavigateToFirstProductPageSuccessfully().IncreaseProductQuantity()
-                .ClickOnAddToCartbtn().ClickOnViewCartBtn().checkThatProductIsAdded()
+                .ClickOnAddToCartBtn().ClickOnViewCartBtn().checkThatProductIsAdded()
                 .checkThatProductQuantityIsRight();
 
     }
