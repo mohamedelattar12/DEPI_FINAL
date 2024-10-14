@@ -24,7 +24,7 @@ public class RegisterWhileCheckout {
                 clickOnProceedToCheckOut().clickOnRegisterLoginBtn().fillInNameSingUp("esraa")
                 .fillInEmailSingUpButton("esraf123@gmail.com").clickOnSignUpButton().fillInRegistrationForm()
                 .clickOnCreateAccount().checkThatSuccessMessageShouldBeDisplayed().
-                clickOnContinueBtn().checkThatLoggedInAsUsernameIsDisplayed().clickOnCartLink()
+                clickOnContinueBtn().checkThatLoggedInAsUsernameIsDisplayed("esraa").clickOnCartLink()
                 .clickonproceedtocheckoutbtn().CheckAddressDetailsIsDisplayed().CheckReviewOrderIsDisplayed()
                 .fillInTextArea().clickOnPlaceOrderBtn().fillPaymentForm().clickOnPayAndConfirmBtn().
                 checkSuccessMessageIsDisplayed().clickOnDeleteAccountBtn().

@@ -26,6 +26,7 @@ public class ContactUsPage {
     By submitButton = By.name("submit");
     By successMessage = By.cssSelector("div.status.alert.alert-success");
     By homeButton = By.cssSelector("a.btn.btn-success");
+    By chooseFile=By.xpath("//div/input[@type=\"file\"]");
 
 
     public ContactUsPage(Driver driver) {
@@ -73,4 +74,6 @@ public class ContactUsPage {
         driver.element().click(homeButton);
         return new HomePage(driver);
     }
+
+
 }

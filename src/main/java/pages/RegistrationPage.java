@@ -17,13 +17,18 @@ public class RegistrationPage {
     By years = By.id("years");
     By firstName = By.id("first_name");
     By lastName = By.id("last_name");
+    By company=By.id("company");
     By address = By.xpath("//input[@data-qa=\"address\"]");
+    By address2=By.xpath("//input[@data-qa=\"address2\"]");
     By country = By.xpath("//select[@data-qa=\"country\"]");
     By state = By.xpath("//input[@data-qa=\"state\"]");
     By city = By.xpath("//input[@data-qa=\"city\"]");
     By zipCode = By.id("zipcode");
     By mobile = By.id("mobile_number");
     By createAccountButton = By.xpath("//button[@data-qa=\"create-account\"]");
+    By newsletterCheckBox=By.id("newsletter");
+    By receiveOffersFromPartners=By.id("optin");
+
 
 
     public RegistrationPage(Driver driver) {
@@ -57,9 +62,15 @@ public class RegistrationPage {
 //        Select selectYears = new Select(driver.get().findElement(years));
 //        selectYears.selectByValue("1986");
 
+        driver.element().click(newsletterCheckBox);
+        driver.element().click(receiveOffersFromPartners);
+
+
         driver.element().fillField(firstName, "Mariam");
         driver.element().fillField(lastName, "Beshara");
+        driver.element().fillField(company,"DEPI");
         driver.element().fillField(address, "Alex");
+        driver.element().fillField(address2,"Alex");
 
 
         Select selectCountry = new Select(driver.get().findElement(country));
@@ -76,5 +87,7 @@ public class RegistrationPage {
         driver.element().click(createAccountButton);
         return new RegistrationSuccessPage(driver);
     }
+
+
 
 }

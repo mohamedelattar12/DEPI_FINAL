@@ -30,6 +30,7 @@ public class HomePage {
 
 
 
+
     public HomePage(Driver driver) {
         this.driver = driver;
     }
@@ -66,7 +67,7 @@ public class HomePage {
         Assert.assertEquals(driver.element().getTextOf(SuccessMessage), "You have been successfully subscribed!");
         return this;
     }
-    public HomePage checkThatLoggedInAsUsernameIsDisplayed() {
+    public HomePage checkThatLoggedInAsUsernameIsDisplayed(String userName) {
         Assert.assertTrue(driver.element().isDisplayed(loggedInAsUser));
         return this;
     }

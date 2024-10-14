@@ -22,7 +22,7 @@ public class RegisterBeforeCheckout {
                .fillInNameSingUp("esraa").fillInEmailSingUpButton("esraaf1234@gmail.com")
                .clickOnSignUpButton().checkThatRegistrationPageIsLoadedSuccessfully()
                .fillInRegistrationForm().clickOnCreateAccount().checkThatSuccessMessageShouldBeDisplayed()
-               .clickOnContinueBtn().checkThatLoggedInAsUsernameIsDisplayed().clickOnFirstAddToCartButton()
+               .clickOnContinueBtn().checkThatLoggedInAsUsernameIsDisplayed("esraa").clickOnFirstAddToCartButton()
                .clickOnCartLink().checkThatViewCartPageIsLoadedSuccessfully()
                .clickonproceedtocheckoutbtn().CheckAddressDetailsIsDisplayed().CheckReviewOrderIsDisplayed()
                .fillInTextArea().clickOnPlaceOrderBtn().fillPaymentForm().

@@ -1,24 +1,13 @@
 package tests;
 
-import com.beust.jcommander.Parameter;
 import driverFactory.Driver;
-import elementActions.ElementActions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
-import pages.ContactUsPage;
 import pages.HomePage;
 import utilities.ScreenShotManager;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
-public class ContactUsTest {
+public class ContactUsFormTest {
     public Driver driver;
 //   public ThreadLocal<Driver> driver;
 
