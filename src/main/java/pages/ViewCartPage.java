@@ -86,11 +86,11 @@ public class ViewCartPage {
 
     /*********************************  Actions  *****************************************************/
 
-    public ViewCartPage clickOnProceedToCheckOut(){
+    public ViewCartPage clickOnProceedToCheckOutForNonRegisteredUser(){
         driver.element().click(proceedToCheckOutBtn);
        return this;
     }
-    public CheckoutPage clickonproceedtocheckoutbtn(){
+    public CheckoutPage clickOnProceedToCheckOutButtonForRegisteredUser(){
         driver.element().click(ptcobtn);
         return new CheckoutPage(driver);
     }

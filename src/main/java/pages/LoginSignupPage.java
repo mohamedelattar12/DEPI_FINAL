@@ -83,7 +83,7 @@ public class LoginSignupPage {
         return this;
     }
 
-    public LoginSignupPage fillInEmailSingUpFiled(String email) {
+    public LoginSignupPage fillInEmailSingUpField(String email) {
         driver.element().fillField(signUpEmail, email);
         return this;
     }

@@ -8,7 +8,7 @@ public class PaymentPage {
     private Driver driver;
     By deleteAccountBtn = By.xpath("//a[@href=\"/delete_account\"]");
 
-
+    By payment = By.className("heading");
     By nameOnCardField = By.name("name_on_card");
     By cardNumber = By.name("card_number");
     By cvcField = By.xpath("//input[@data-qa=\"cvc\"]");
@@ -16,7 +16,12 @@ public class PaymentPage {
     By expriationYear = By.xpath("//input[@name=\"expiry_year\"]");
     By payAndConfirmBtn = By.xpath("//button[@class=\"form-control btn btn-primary submit-button\"]");
 
+    public PaymentPage checkThatPaymentPageIsLoadedSuccessfully(){
+        Assert.assertTrue(driver.browser().getCurrentURL().contains("/payment"));
+        Assert.assertTrue(driver.element().isDisplayed(payment));
+        return this;
 
+    }
 /*********************************  Actions  *****************************************************/
 
 

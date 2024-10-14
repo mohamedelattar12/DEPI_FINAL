@@ -27,6 +27,9 @@ public class HomePage {
     By loggedInAsUser = By.xpath("//b");
     By cartLink = By.xpath("(//a[@href=\"/view_cart\"])[1]");
     By signupLoginBtn = By.xpath("//a[@href=\"/login\"]");
+    By continueShopping = By.cssSelector("button.close-modal");
+    By scrollUpArrow = By.xpath("//a[@href=\"#top\"]");
+    By fullFledgedText = By.xpath("(//div[@class=\"col-sm-6\"])[3]/h2");
 
 
 
@@ -69,6 +72,11 @@ public class HomePage {
     }
     public HomePage checkThatLoggedInAsUsernameIsDisplayed(String userName) {
         Assert.assertTrue(driver.element().isDisplayed(loggedInAsUser));
+        return this;
+    }
+
+    public HomePage checkThatThePageIsScrolledUpSuccessfully(){
+        Assert.assertTrue(driver.element().isDisplayed(fullFledgedText));
         return this;
     }
 
@@ -142,6 +150,26 @@ public class HomePage {
     public LoginSignupPage clickOnLoginSignupBtn() {
         driver.element().click(signupLoginBtn);
         return new LoginSignupPage(driver);
+    }
+
+    public HomePage clickOnContinueShoppingButton(){
+        driver.element().click(continueShopping);
+        return this;
+    }
+
+    public HomePage scrollDownToBottom(){
+        driver.browser().scrollToBottom();
+        return this;
+    }
+
+    public HomePage scrollUpToTopWithoutArrow(){
+        driver.browser().scrollToTop();
+        return this;
+    }
+
+    public HomePage scrollUpToTopWithArrow(){
+        driver.element().click(scrollUpArrow);
+        return this;
     }
 
 }

@@ -21,11 +21,11 @@ public class RegisterWhileCheckout {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully().clickOnFirstAddToCartButton().
                 clickOnViewCartButton().checkThatViewCartPageIsLoadedSuccessfully().
-                clickOnProceedToCheckOut().clickOnRegisterLoginBtn().fillInNameSingUp("esraa")
-                .fillInEmailSingUpFiled("esraf123@gmail.com").clickOnSignUpButton().fillInRegistrationForm()
+                clickOnProceedToCheckOutForNonRegisteredUser().clickOnRegisterLoginBtn().fillInNameSingUp("esraa")
+                .fillInEmailSingUpField("esraf123@gmail.com").clickOnSignUpButton().fillInRegistrationForm()
                 .clickOnCreateAccount().checkThatSuccessMessageShouldBeDisplayed().
                 clickOnContinueBtn().checkThatLoggedInAsUsernameIsDisplayed("esraa").clickOnCartLink()
-                .clickonproceedtocheckoutbtn().CheckAddressDetailsIsDisplayed().CheckReviewOrderIsDisplayed()
+                .clickOnProceedToCheckOutButtonForRegisteredUser().CheckAddressDetailsIsDisplayed().CheckReviewOrderIsDisplayed()
                 .fillInTextArea().clickOnPlaceOrderBtn().fillPaymentForm().clickOnPayAndConfirmBtn().
                 checkSuccessMessageIsDisplayed().clickOnDeleteAccountBtn().
                 checkThatAccountDeletedSuccessfully().clickOnContinueButton();

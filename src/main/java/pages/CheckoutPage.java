@@ -8,11 +8,18 @@ public class CheckoutPage {
     private Driver driver;
 
     By addressDetails = By.xpath("//ul[@class=\"address item box\"]");
-    By reviewOrder = By.xpath("//tr[@class=\"cart_menu\"]");
+    By reviewOrder = By.xpath("//div[@class=\"table-responsive cart_info\"]");
     By textArea = By.xpath("//textarea[@class=\"form-control\"]");
     By placeOrderBtn = By.xpath("//a[@class=\"btn btn-default check_out\"]");
     public CheckoutPage(Driver driver) {
         this.driver = driver;
+    }
+
+    public CheckoutPage checkThatCheckOutPageIsLoadedSuccessfully() {
+        Assert.assertTrue(driver.browser().getCurrentURL().contains("/checkout"));
+        Assert.assertTrue(driver.element().isDisplayed(addressDetails));
+        Assert.assertTrue(driver.element().isDisplayed(reviewOrder));
+        return this;
     }
 
     public CheckoutPage CheckAddressDetailsIsDisplayed(){

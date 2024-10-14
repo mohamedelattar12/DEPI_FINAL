@@ -26,7 +26,7 @@ public class RegisterWithExistEmailTest {
                 .clickOnLoginLink()
                 .checkThatUserIsNavigateToLoginSignUpPage()
                 .fillInNameSingUp("Mariam")
-                .fillInEmailSingUpFiled("TestTest12345@gmail.com")
+                .fillInEmailSingUpField("TestTest12345@gmail.com")
                 .clickOnSignUpButtonUsingExistEmail()
                 .checkThatErrorMessageIsVisibleWhenUseExistEmail();
 
