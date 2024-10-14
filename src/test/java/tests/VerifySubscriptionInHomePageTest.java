@@ -17,7 +17,7 @@ public class VerifySubscriptionInHomePageTest {
     }
 
     @Test
-    public void checkThatUserCanSearchForProduct() {
+    public void checkThatUserCanSubscribeFromHomePage() {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
                 .checkThatSubscriptionIsvIsVisible()

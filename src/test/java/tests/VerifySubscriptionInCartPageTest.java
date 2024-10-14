@@ -18,7 +18,7 @@ public class VerifySubscriptionInCartPageTest {
     }
 
     @Test
-    public void checkThatUserCanSubscribeFromHomePage(){
+    public void checkThatUserCanSubscribeFromCartPage(){
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
                 .clickOnCartLink()
