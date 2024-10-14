@@ -22,7 +22,11 @@ public class ProductsPage {
     By clickOnSecondProductAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[3]");
     By viewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
     By viewProduct = By.xpath("//a[@href=\"/product_details/1\"]");
-
+    By brands = By.cssSelector("body > section:nth-child(3) > div > div > div.col-sm-3 > div > div.brands_products > h2");
+    By poloBrandName = By.cssSelector("body > section:nth-child(3) > div > div > div.col-sm-3 > div > div.brands_products > div > ul > li:nth-child(1) > a");
+    By poloBrandTitle = By.xpath("/html/body/section/div/div[2]/div[2]/div/h2");
+    By madameBrandName = By.cssSelector("body > section > div > div.row > div.col-sm-3 > div > div.brands_products > div > ul > li:nth-child(3) > a");
+    By madameBrandTitle = By.xpath("/html/body/section/div/div[2]/div[2]/div/h2");
 
     public ProductsPage(Driver driver) {
         this.driver = driver;
@@ -44,13 +48,37 @@ public class ProductsPage {
 
         return this;
     }
+    public ProductsPage checkThatBrandsAreVisibleOnLeftSideBar(){
+        Assert.assertTrue(driver.element().getTextOf(brands).contains("BRANDS"));
+        return this;
+    }
 
+    public ProductsPage checkThatuserIsNavigatedToPoloBrandPage(){
+        Assert.assertTrue(driver.element().getTextOf(poloBrandTitle).contains("POLO PRODUCTS"));
+        Assert.assertTrue(driver.browser().getCurrentURL().contains("brand_products/Polo"));
+        return this;
+    }
+    public ProductsPage checkThatuserIsNavigatedToMadameBrandPage(){
+        Assert.assertTrue(driver.element().getTextOf(madameBrandTitle).contains("MADAME PRODUCTS"));
+        Assert.assertTrue(driver.browser().getCurrentURL().contains("brand_products/Madame"));
+        return this;
+    }
 
     /*********************************  Actions  *****************************************************/
 
     public FirstProductPage clickOnFirstProduct() {
         driver.element().click(firstProductLink);
         return new FirstProductPage(driver);
+    }
+
+    public ProductsPage clickOnPoloBrandName() {
+        driver.element().click(poloBrandName);
+        return this;
+    }
+
+    public ProductsPage clickOnMadameBrandName() {
+        driver.element().click(madameBrandName);
+        return this;
     }
 
     public ProductsPage searchForProduct(String X) {
