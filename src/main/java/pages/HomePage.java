@@ -30,8 +30,9 @@ public class HomePage {
     By continueShopping = By.cssSelector("button.close-modal");
     By scrollUpArrow = By.xpath("//a[@href=\"#top\"]");
     By fullFledgedText = By.xpath("(//div[@class=\"col-sm-6\"])[3]/h2");
-
-
+    By recommendedItemsTitle = By.xpath("//div[@class=\"recommended_items\"]/h2");
+    By AddToCartBtnInRecommendedItems = By.cssSelector("#recommended-item-carousel > div > div.item.active > div:nth-child(2) > div > div > div > a");
+    By ViewCartBtnInRecommendedItems = By.xpath("//a[@href=\"/view_cart\"]/u");
 
 
     public HomePage(Driver driver) {
@@ -80,6 +81,10 @@ public class HomePage {
         return this;
     }
 
+    public HomePage checkThatRecommendedItemsTitleIsDisplayed() {
+        Assert.assertEquals(driver.element().getTextOf(recommendedItemsTitle), "RECOMMENDED ITEMS");
+        return this;
+    }
 
     /*********************************  Actions  *****************************************************/
 
@@ -172,4 +177,13 @@ public class HomePage {
         return this;
     }
 
+    public HomePage clickOnAddToCartBtnInRecommendedItems(){
+        driver.element().click(AddToCartBtnInRecommendedItems);
+        return this;
+    }
+
+    public ViewCartPage clickOnViewCartBtnInRecommendedItems(){
+        driver.element().click(ViewCartBtnInRecommendedItems);
+        return new ViewCartPage(driver);
+    }
 }

@@ -10,7 +10,7 @@ public class ViewCartPage {
     Driver driver;
 
     By productsTable=By.xpath("//div[@id=\"cart_info\"]");
-    By addedProductDescription = By.xpath("//a[@href=\"/product_details/1\"]");
+    By addedProductDescription = By.xpath("//td[@class=\"cart_description\"]");
     By addedProductQuantity = By.xpath("//button[@class=\"disabled\"]");
     By proceedToCheckOutBtn = By.xpath("//a[@class=\"btn btn-default check_out\"]");
     By registerLoginBtn = By.xpath("(//a[@href=\"/login\"])[2]");
