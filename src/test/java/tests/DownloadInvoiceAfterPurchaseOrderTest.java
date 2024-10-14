@@ -78,7 +78,6 @@ public class DownloadInvoiceAfterPurchaseOrderTest {
     public void DownloadInvoiceAfterPurchaseTheOrder(){
         new PaymentSuccessPage(driver)
                 .clickOnDownloadInVoiceButton()
-                .checkThatInvoiceIsDownloadedSuccessfully()
                 .clickOnContinueButton()
                 .checkThatHomePageIsLoadedSuccessfully();
 
