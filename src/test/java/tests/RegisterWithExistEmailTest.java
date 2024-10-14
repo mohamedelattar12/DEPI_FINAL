@@ -24,7 +24,7 @@ public class RegisterWithExistEmailTest {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
                 .clickOnLoginLink()
-                .checkThatLoginToSignIsVisible()
+                .checkThatUserIsNavigateToLoginSignUpPage()
                 .fillInNameSingUp("Mariam")
                 .fillInEmailSingUpFiled("TestTest12345@gmail.com")
                 .clickOnSignUpButtonUsingExistEmail()
