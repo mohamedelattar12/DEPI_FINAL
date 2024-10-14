@@ -19,7 +19,7 @@ public class RegisterBeforeCheckout {
     @Test
     public void checkThatProductQuantityIsAccurate(){
        new HomePage(driver).checkThatHomePageIsLoadedSuccessfully().clickOnLoginSignupBtn()
-               .fillInNameSingUp("esraa").fillInEmailSingUpButton("esraaf1234@gmail.com")
+               .fillInNameSingUp("esraa").fillInEmailSingUpFiled("esraaf1234@gmail.com")
                .clickOnSignUpButton().checkThatRegistrationPageIsLoadedSuccessfully()
                .fillInRegistrationForm().clickOnCreateAccount().checkThatSuccessMessageShouldBeDisplayed()
                .clickOnContinueBtn().checkThatLoggedInAsUsernameIsDisplayed("esraa").clickOnFirstAddToCartButton()

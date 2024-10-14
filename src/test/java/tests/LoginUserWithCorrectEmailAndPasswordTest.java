@@ -1,7 +1,6 @@
 package tests;
 
 import driverFactory.Driver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -27,7 +26,7 @@ public class LoginUserWithCorrectEmailAndPasswordTest {
                 .clickOnLoginLink()
                 .checkThatUserIsNavigateToLoginSignUpPage()
                 .fillInNameSingUp("Mariam")
-                .fillInEmailSingUpButton("TestTest123456@gmail.com")
+                .fillInEmailSingUpFiled("TestTest123456@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
                 .fillInRegistrationForm()

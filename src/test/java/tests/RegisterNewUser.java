@@ -6,7 +6,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.LoginSignupPage;
 
 
 public class RegisterNewUser {
@@ -34,7 +33,7 @@ public class RegisterNewUser {
                 .clickOnLoginLink()
                 .checkThatUserIsNavigateToLoginSignUpPage()
                 .fillInNameSingUp("Mariam")
-                .fillInEmailSingUpButton("TestTest123456@gmail.com")
+                .fillInEmailSingUpFiled("TestTest123456@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
                 .fillInRegistrationForm()
