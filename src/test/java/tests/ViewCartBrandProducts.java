@@ -6,7 +6,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
-public class VerifySubscriptionInHomePageTest {
+import java.time.Duration;
+
+public class ViewCartBrandProducts {
     public Driver driver;
 
     @BeforeClass
@@ -14,25 +16,26 @@ public class VerifySubscriptionInHomePageTest {
         driver = new Driver("CHROME");
         driver.browser().maximizeWindows();
         driver.browser().navigateToURL("https://automationexercise.com");
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @Test
-    public void checkThatUserCanSubscribeFromHomePage() {
+    public void checkThatProductQuantityIsAccurate(){
         new HomePage(driver)
-                .checkThatHomePageIsLoadedSuccessfully()
-                .checkThatSubscriptionIsvIsVisible()
-                .fillEmailField("Test1Test333@gmail.com")
-                .clickOnEmailSubscriptionButton()
-                .checkThatSuccessMessageDisplayedSuccessfully();
+                .clickOnProductsLink()
+                .checkThatBrandsAreVisibleOnLeftSideBar()
+                .clickOnPoloBrandName()
+                .checkThatuserIsNavigatedToPoloBrandPage()
+                .clickOnMadameBrandName()
+                .checkThatuserIsNavigatedToMadameBrandPage();
     }
+
 
 
     @AfterClass
     public void tearDown() {
-        driver.browser().deleteAllCookies();
+//        driver.browser().deleteAllCookies();
         driver.quit();
-
-
     }
 
 }

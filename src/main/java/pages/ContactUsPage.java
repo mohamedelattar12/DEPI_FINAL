@@ -26,7 +26,7 @@ public class ContactUsPage {
     By submitButton = By.name("submit");
     By successMessage = By.cssSelector("div.status.alert.alert-success");
     By homeButton = By.cssSelector("a.btn.btn-success");
-    By chooseFile=By.xpath("//div/input[@type=\"file\"]");
+    By chooseFile = By.xpath("//div/input[@type=\"file\"]");
 
 
     public ContactUsPage(Driver driver) {
@@ -57,10 +57,10 @@ public class ContactUsPage {
     /*********************************  Actions  *****************************************************/
 
     public ContactUsPage fillInContactUsFrom(String name, String email, String subject, String message) {
-   driver.element().fillField(nameField,name);
-        driver.element().fillField(emailField,email);
-        driver.element().fillField(subjectField,subject);
-        driver.element().fillField(messageField,message);
+        driver.element().fillField(nameField, name);
+        driver.element().fillField(emailField, email);
+        driver.element().fillField(subjectField, subject);
+        driver.element().fillField(messageField, message);
         return this;
     }
 
