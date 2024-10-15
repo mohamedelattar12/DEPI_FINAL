@@ -88,6 +88,4 @@ public class RegistrationPage {
         return new RegistrationSuccessPage(driver);
     }
 
-
-
 }
