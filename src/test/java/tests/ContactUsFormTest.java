@@ -35,14 +35,6 @@ public class ContactUsFormTest {
 
     }
 
-//    @AfterMethod
-//    public void screenShotOnFailure(ITestResult result) {
-//        if (result.getStatus() == ITestResult.FAILURE) {
-//            System.out.println("Test Failed");
-//            System.out.println("Taking screen shot.....");
-//            ScreenShotManager.CaptureScreenShot(driver.get(), result.getName());
-//        }
-//    }
 
     @AfterClass
     public void tearDown() {
