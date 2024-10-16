@@ -1,6 +1,7 @@
 package pages;
 
 import driverFactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -16,6 +17,7 @@ public class TestCasePage {
 
     /*********************************  Assertions  *****************************************************/
 
+    @Step("check that Test Case Page is loaded successfully")
     public void checkThatTestCasePageIsLoadedSuccessfully(){
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/test_cases"));
         Assert.assertTrue(driver.element().isDisplayed(testCaseTitle));

@@ -13,14 +13,12 @@ public class ViewCartBrandProducts {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com");
-        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver = new Driver();
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @Test
-    public void checkThatProductQuantityIsAccurate(){
+    public void checkThatProductQuantityIsAccurate() {
         new HomePage(driver)
                 .clickOnProductsLink()
                 .checkThatBrandsAreVisibleOnLeftSideBar()
@@ -31,10 +29,9 @@ public class ViewCartBrandProducts {
     }
 
 
-
     @AfterClass
     public void tearDown() {
-//        driver.browser().deleteAllCookies();
+        driver.browser().deleteAllCookies();
         driver.quit();
     }
 

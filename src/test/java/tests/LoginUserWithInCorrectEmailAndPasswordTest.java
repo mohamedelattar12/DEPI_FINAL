@@ -6,15 +6,16 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
+import java.time.Duration;
+
 public class LoginUserWithInCorrectEmailAndPasswordTest {
     public Driver driver;
 
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.browser().navigateToURL("https://automationexercise.com");
-        driver.browser().maximizeWindows();
+        driver = new Driver();
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
 
@@ -25,7 +26,7 @@ public class LoginUserWithInCorrectEmailAndPasswordTest {
                 .checkThatHomePageIsLoadedSuccessfully()
                 .clickOnLoginLink()
                 .checkThatUserIsNavigateToLoginSignUpPage()
-                .checkThatLoginToSignIsVisible()
+                .checkThatLoginToYourAccountIsVisible()
                 .fillInLoginEmail("TestTest123@gmail.com")
                 .fillInLoginPassword("12345678").
                 clickOnLoginButtonUsingIncorrectData().

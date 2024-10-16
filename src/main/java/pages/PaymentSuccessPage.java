@@ -1,6 +1,7 @@
 package pages;
 
 import driverFactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -12,32 +13,39 @@ public class PaymentSuccessPage {
     By continueButton = By.xpath("//a[@data-qa=\"continue-button\"]");
 
 
-    public PaymentSuccessPage (Driver driver){
+    public PaymentSuccessPage(Driver driver) {
         this.driver = driver;
     }
-/*********************************  Assertions  *****************************************************/
-    public PaymentSuccessPage checkSuccessMessageIsDisplayed(){
+
+    /*********************************  Assertions  *****************************************************/
+
+    @Step("Check that success message is displayed")
+    public PaymentSuccessPage checkSuccessMessageIsDisplayed() {
         Assert.assertTrue(driver.element().isDisplayed(successPaymentMessage));
         return this;
     }
 
-    public PaymentSuccessPage checkThatInvoiceIsDownloadedSuccessfully(){
-
+    @Step("Check that invoice is downloaded successfully")
+    public PaymentSuccessPage checkThatInvoiceIsDownloadedSuccessfully() {
         return this;
     }
-/*********************************  Actions  *****************************************************/
 
-    public AccountSuccessfulDeletion clickOnDeleteAccountBtn(){
+    /*********************************  Actions  *****************************************************/
+
+    @Step("Check that user can click on Delete Account button")
+    public AccountSuccessfulDeletion clickOnDeleteAccountBtn() {
         driver.element().click(deleteAccountBtn);
         return new AccountSuccessfulDeletion(driver);
-
     }
-    public PaymentSuccessPage clickOnDownloadInVoiceButton(){
+
+    @Step("Check that user can click on download invoice button")
+    public PaymentSuccessPage clickOnDownloadInVoiceButton() {
         driver.element().click(downloadInVoice);
         return this;
     }
 
-    public HomePage clickOnContinueButton(){
+    @Step("Check that user can click on continue button")
+    public HomePage clickOnContinueButton() {
         driver.element().click(continueButton);
         return new HomePage(driver);
     }

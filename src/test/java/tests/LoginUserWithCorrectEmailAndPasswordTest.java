@@ -6,6 +6,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
+import java.time.Duration;
+
 public class LoginUserWithCorrectEmailAndPasswordTest {
 
     public Driver driver;
@@ -13,9 +15,8 @@ public class LoginUserWithCorrectEmailAndPasswordTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.browser().navigateToURL("https://automationexercise.com");
-        driver.browser().maximizeWindows();
+        driver = new Driver();
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @Test(priority = 1)
@@ -25,7 +26,7 @@ public class LoginUserWithCorrectEmailAndPasswordTest {
                 .checkThatLoginLinkShouldBeDisplayed()
                 .clickOnLoginLink()
                 .checkThatUserIsNavigateToLoginSignUpPage()
-                .fillInNameSingUp("Mariam")
+                .fillInNameSingUpField("Mariam")
                 .fillInEmailSingUpField("TestTest123456@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
@@ -43,7 +44,7 @@ public class LoginUserWithCorrectEmailAndPasswordTest {
                 .checkThatHomePageIsLoadedSuccessfully()
                 .clickOnLoginLink()
                 .checkThatUserIsNavigateToLoginSignUpPage()
-                .checkThatLoginToSignIsVisible()
+                .checkThatLoginToYourAccountIsVisible()
                 .fillInLoginEmail("TestTest123456@gmail.com")
                 .fillInLoginPassword("12345678")
                 .clickOnLoginButton()

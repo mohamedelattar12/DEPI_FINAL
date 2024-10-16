@@ -14,15 +14,9 @@ public class ContactUsFormTest {
     @BeforeClass
     @Parameters(value = {"browserName"})
     public void SetUp(@Optional("CHROME") String browserName) {
-//        driver = new ThreadLocal<>();
-//        driver.set(new Driver(browserName));
-        driver = new Driver(browserName);
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com/");
-        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
+        driver = new Driver();
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-//        driver.element().hoverOnItem(By.xpath("(//div[@class=\"overlay-content\"])[1]"))
-//                .click(By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]"));
     }
 
     @Test(priority = 1)

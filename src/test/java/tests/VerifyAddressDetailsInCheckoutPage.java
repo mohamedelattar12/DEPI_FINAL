@@ -13,19 +13,17 @@ public class VerifyAddressDetailsInCheckoutPage {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com");
+        driver = new Driver();
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @Test
-    public void verifyAddressDetails(){
+    public void verifyAddressDetails() {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
                 .clickOnLoginSignupBtn()
                 .checkThatUserIsNavigateToLoginSignUpPage()
-                .fillInNameSingUp("Ahmed")
+                .fillInNameSingUpField("Ahmed")
                 .fillInEmailSingUpField("TestTest123456788@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
@@ -38,8 +36,8 @@ public class VerifyAddressDetailsInCheckoutPage {
                 .clickOnCartLink()
                 .checkThatViewCartPageIsLoadedSuccessfully()
                 .clickOnProceedToCheckOutButtonForRegisteredUser()
-                .CheckAddressDetailsIsDisplayed()
-                .CheckReviewOrderIsDisplayed()
+                .checkAddressDetailsIsDisplayed()
+                .checkReviewOrderIsDisplayed()
                 .fillInTextArea()
                 .clickOnPlaceOrderBtn()
                 .fillPaymentForm()

@@ -13,9 +13,7 @@ public class AddToCartFromRecommendedItems {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com");
+        driver = new Driver();
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 

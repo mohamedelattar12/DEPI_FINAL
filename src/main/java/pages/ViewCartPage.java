@@ -9,7 +9,7 @@ public class ViewCartPage {
 
     Driver driver;
 
-    By productsTable=By.xpath("//div[@id=\"cart_info\"]");
+    By productsTable = By.xpath("//div[@id=\"cart_info\"]");
     By addedProductDescription = By.xpath("//td[@class=\"cart_description\"]");
     By addedProductQuantity = By.xpath("//button[@class=\"disabled\"]");
     By proceedToCheckOutBtn = By.xpath("//a[@class=\"btn btn-default check_out\"]");
@@ -31,23 +31,27 @@ public class ViewCartPage {
     By SuccessMessage = By.id("success-subscribe");
 
 
-
     public ViewCartPage(Driver driver) {
         this.driver = driver;
     }
 
     /**********************************  Assertions  ****************************************/
 
-    public ViewCartPage checkThatViewCartPageIsLoadedSuccessfully(){
+    @Step("Check that View Cart Page is loaded successfully")
+    public ViewCartPage checkThatViewCartPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/view_cart"));
         Assert.assertTrue(driver.element().isDisplayed(productsTable));
         return this;
     }
-    public ViewCartPage checkThatProductIsAdded(){
+
+    @Step("Check that product is added")
+    public ViewCartPage checkThatProductIsAdded() {
         Assert.assertTrue(driver.element().isDisplayed(addedProductDescription));
         return this;
     }
-    public ViewCartPage checkThatProductQuantityIsRight(){
+
+    @Step("Check that product quantity is right")
+    public ViewCartPage checkThatProductQuantityIsRight() {
         Assert.assertTrue(driver.element().isDisplayed(addedProductQuantity));
         return this;
     }
@@ -86,30 +90,33 @@ public class ViewCartPage {
 
     /*********************************  Actions  *****************************************************/
 
-    public ViewCartPage clickOnProceedToCheckOutForNonRegisteredUser(){
+    @Step("Check that user can click on proceed to checkOut for non registered user")
+    public ViewCartPage clickOnProceedToCheckOutForNonRegisteredUser() {
         driver.element().click(proceedToCheckOutBtn);
-       return this;
+        return this;
     }
-    public CheckoutPage clickOnProceedToCheckOutButtonForRegisteredUser(){
+
+    @Step("Check that user can click on proceed to checkOut button for registered user")
+    public CheckoutPage clickOnProceedToCheckOutButtonForRegisteredUser() {
         driver.element().click(ptcobtn);
         return new CheckoutPage(driver);
     }
 
-
-    public LoginSignupPage clickOnRegisterLoginBtn(){
+    @Step("Check that user can click on Register Login Button")
+    public LoginSignupPage clickOnRegisterLoginBtn() {
         driver.element().click(registerLoginBtn);
         return new LoginSignupPage(driver);
     }
 
     @Step("Check That User Can Fill Email Field")
     public ViewCartPage fillEmailField(String email) {
-       driver.element().fillField(emailField, email);
+        driver.element().fillField(emailField, email);
         return this;
-   }
+    }
 
-  @Step("Check That User Can Click On Email Arrow Button")
+    @Step("Check That User Can Click On Email Arrow Button")
     public ViewCartPage clickOnEmailArrowButton() {
-       driver.element().click(submitEmailButton);
-     return this;
+        driver.element().click(submitEmailButton);
+        return this;
     }
 }

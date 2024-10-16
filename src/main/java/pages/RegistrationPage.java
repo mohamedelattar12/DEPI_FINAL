@@ -1,6 +1,7 @@
 package pages;
 
 import driverFactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -17,18 +18,17 @@ public class RegistrationPage {
     By years = By.id("years");
     By firstName = By.id("first_name");
     By lastName = By.id("last_name");
-    By company=By.id("company");
+    By company = By.id("company");
     By address = By.xpath("//input[@data-qa=\"address\"]");
-    By address2=By.xpath("//input[@data-qa=\"address2\"]");
+    By address2 = By.xpath("//input[@data-qa=\"address2\"]");
     By country = By.xpath("//select[@data-qa=\"country\"]");
     By state = By.xpath("//input[@data-qa=\"state\"]");
     By city = By.xpath("//input[@data-qa=\"city\"]");
     By zipCode = By.id("zipcode");
     By mobile = By.id("mobile_number");
     By createAccountButton = By.xpath("//button[@data-qa=\"create-account\"]");
-    By newsletterCheckBox=By.id("newsletter");
-    By receiveOffersFromPartners=By.id("optin");
-
+    By newsletterCheckBox = By.id("newsletter");
+    By receiveOffersFromPartners = By.id("optin");
 
 
     public RegistrationPage(Driver driver) {
@@ -37,6 +37,7 @@ public class RegistrationPage {
 
     /*********************************  Assertions  *****************************************************/
 
+    @Step("Check that Registration Page is loaded successfully")
     public RegistrationPage checkThatRegistrationPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.get().getCurrentUrl().contains("/signup"));
         Assert.assertTrue(driver.element().isDisplayed(pageTitle));
@@ -44,9 +45,9 @@ public class RegistrationPage {
         return this;
     }
 
-
     /*********************************  Actions  *****************************************************/
 
+    @Step("Check that user can fill in registration form")
     public RegistrationPage fillInRegistrationForm() {
         driver.element().fillField(password, "12345678");
 
@@ -54,11 +55,11 @@ public class RegistrationPage {
 //        Select selectDays = new Select(driver.get().findElement(days));
 //        selectDays.selectByIndex(4);
 
-        driver.element().selectByIndex(months,10);
+        driver.element().selectByIndex(months, 10);
 //        Select selectMonth = new Select(driver.get().findElement(months));
 //        selectMonth.selectByIndex(10);
 
-        driver.element().selectByValue(years,"1986");
+        driver.element().selectByValue(years, "1986");
 //        Select selectYears = new Select(driver.get().findElement(years));
 //        selectYears.selectByValue("1986");
 
@@ -68,9 +69,9 @@ public class RegistrationPage {
 
         driver.element().fillField(firstName, "Mariam");
         driver.element().fillField(lastName, "Beshara");
-        driver.element().fillField(company,"DEPI");
+        driver.element().fillField(company, "DEPI");
         driver.element().fillField(address, "Alex");
-        driver.element().fillField(address2,"Alex");
+        driver.element().fillField(address2, "Alex");
 
 
         Select selectCountry = new Select(driver.get().findElement(country));
@@ -83,6 +84,7 @@ public class RegistrationPage {
         return this;
     }
 
+    @Step("Check that user can click on Create Account button")
     public RegistrationSuccessPage clickOnCreateAccount() {
         driver.element().click(createAccountButton);
         return new RegistrationSuccessPage(driver);
