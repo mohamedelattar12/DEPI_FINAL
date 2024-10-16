@@ -25,7 +25,7 @@ public class HomePage {
     By footer = By.id("footer");
     By viewProduct = By.xpath("//a[@href=\"/product_details/1\"]");
     By loggedInAsUser = By.xpath("//b");
-    By cartLink = By.xpath("//a[@href=\"/view_cart\"][1]");
+    By cartLink = By.xpath("(//a[@href=\"/view_cart\"])[1]");
     By signupLoginBtn = By.xpath("//a[@href=\"/login\"]");
     By continueShopping = By.cssSelector("button.close-modal");
     By scrollUpArrow = By.xpath("//a[@href=\"#top\"]");
