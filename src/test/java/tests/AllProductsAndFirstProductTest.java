@@ -24,6 +24,7 @@ public class AllProductsAndFirstProductTest {
     @Test
     public void checkThatUserCanNavigateToFirstProductPageSuccessfully() {
         new HomePage(driver)
+                .checkThatHomePageIsLoadedSuccessfully()
                 .clickOnProductsLink()
                 .checkThatProductsPageIsLoadedSuccessfully()
                 .clickOnFirstProduct()
