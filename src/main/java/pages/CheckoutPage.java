@@ -12,6 +12,20 @@ public class CheckoutPage {
     By reviewOrder = By.xpath("//div[@class=\"table-responsive cart_info\"]");
     By textArea = By.xpath("//textarea[@class=\"form-control\"]");
     By placeOrderBtn = By.xpath("//a[@class=\"btn btn-default check_out\"]");
+    By yourDeliveryAddressTitle = By.xpath("//ul[@id=\"address_delivery\"]");
+    By yourDeliveryAddressFirstLastName = By.xpath("//ul[@id=\"address_delivery\"]/li[2]");
+    By yourDeliveryAddressAddress1Address2 = By.xpath("//ul[@id=\"address_delivery\"]/li[4]");
+    By yourDeliveryAddressCityStatePostcode = By.xpath("//ul[@id=\"address_delivery\"]/li[6]");
+    By yourDeliveryAddressCountry = By.xpath("//ul[@id=\"address_delivery\"]/li[7]");
+    By yourDeliveryAddressPhone = By.xpath("//ul[@id=\"address_delivery\"]/li[8]");
+    By yourBillingAddressTitle = By.xpath("//ul[@id=\"address_invoice\"]");
+    By yourBillingAddressFirstLastName = By.xpath("//ul[@id=\"address_invoice\"]/li[2]");
+    By yourBillingAddressAddress1Address2 = By.xpath("//ul[@id=\"address_invoice\"]/li[4]");
+    By yourBillingAddressCityStatePostcode = By.xpath("//ul[@id=\"address_invoice\"]/li[6]");
+    By yourBillingAddressCountry = By.xpath("//ul[@id=\"address_invoice\"]/li[7]");
+    By yourBillingAddressPhone = By.xpath("//ul[@id=\"address_invoice\"]/li[8]");
+    By deleteAccountBtn = By.xpath("//a[@href=\"/delete_account\"]");
+
 
     public CheckoutPage(Driver driver) {
         this.driver = driver;
@@ -39,6 +53,28 @@ public class CheckoutPage {
         return this;
     }
 
+    @Step("Verify that the delivery address is same address filled")
+    public CheckoutPage verifyThatDeliveryAddressSameAsAddressFilled() {
+        Assert.assertTrue(driver.element().isDisplayed(yourDeliveryAddressTitle));
+        Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressFirstLastName),"Mariam"+" "+"Beshara");
+        Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressAddress1Address2),"Alex"+" "+"Alex");
+        Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressCityStatePostcode),"Alex"+" "+"Alex"+" "+"123456");
+        Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressCountry),"Canada");
+        Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressPhone),"01236985214");
+        return this;
+    }
+
+    @Step("Verify that the billing address is same address filled")
+    public CheckoutPage verifyThatBillingAddressSameAsAddressFilled() {
+        Assert.assertTrue(driver.element().isDisplayed(yourBillingAddressTitle));
+        Assert.assertEquals(driver.element().getTextOf(yourBillingAddressFirstLastName),"Mariam"+" "+"Beshara");
+        Assert.assertEquals(driver.element().getTextOf(yourBillingAddressAddress1Address2),"Alex"+" "+"Alex");
+        Assert.assertEquals(driver.element().getTextOf(yourBillingAddressCityStatePostcode),"Alex"+" "+"Alex"+" "+"123456");
+        Assert.assertEquals(driver.element().getTextOf(yourBillingAddressCountry),"Canada");
+        Assert.assertEquals(driver.element().getTextOf(yourBillingAddressPhone),"01236985214");
+        return this;
+    }
+
     /*********************************  Actions  *****************************************************/
 
     @Step("Check that user can fill in text area")
@@ -51,6 +87,12 @@ public class CheckoutPage {
     public PaymentPage clickOnPlaceOrderBtn() {
         driver.element().click(placeOrderBtn);
         return new PaymentPage(driver);
+    }
+
+    @Step("Check that user can click on Delete Account button")
+    public AccountSuccessfulDeletion clickOnDeleteAccountBtn() {
+        driver.element().click(deleteAccountBtn);
+        return new AccountSuccessfulDeletion(driver);
     }
 
 
