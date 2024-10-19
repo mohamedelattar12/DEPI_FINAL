@@ -11,9 +11,7 @@ public class RemoveProductsFromCart {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com");
+        driver = new Driver();
     }
 
     @Test
@@ -21,8 +19,9 @@ public class RemoveProductsFromCart {
         new HomePage(driver).checkThatHomePageIsLoadedSuccessfully().clickOnLoginLink()
                 .fillInLoginEmail("doaa121093@gmail.com").fillInLoginPassword("123456")
                 .clickOnLoginButton()
-                .checkThatLoggedInAsUsernameIsDisplayed().clickOnFirstAddToCartButton()
-                .clickOnCartLink().checkThatViewCartPageIsLoadedSuccessfully().clickOnremoveProductBtn()
+                .checkThatLoggedInAsUsernameIsDisplayed("Doaa")
+                .clickOnFirstAddToCartButton().clickOnCartLink()
+                .checkThatViewCartPageIsLoadedSuccessfully().clickOnremoveProductBtn()
                 .checkThatProductRemovedFromTheCartSuccessfully();
 
 

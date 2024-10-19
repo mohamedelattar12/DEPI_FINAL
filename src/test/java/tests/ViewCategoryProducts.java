@@ -11,9 +11,8 @@ public class ViewCategoryProducts {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com");
+        driver = new Driver();
+
     }
 
     @Test
