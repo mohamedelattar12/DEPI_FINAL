@@ -18,7 +18,6 @@ public class ViewCategoryProducts {
     @Test
     public void checkThatUserCanDealWithCategoryPageSuccessfully() {
         new HomePage(driver)
-//                .clickOnLoginLink().fillInLoginEmail("doaa121093@gmail.com").fillInLoginPassword("123456").clickOnLoginButton()
                 .checkThatCategoriesAreVisibleOnLeftSideBar()
                 .clickOnWomenCategory().clickOnTopsWomenCategory()
                 .checkThatCategoryPageIsLoadedSuccessfully()
@@ -31,7 +30,7 @@ public class ViewCategoryProducts {
 
     @AfterClass
     public void tearDown() {
-//        driver.browser().deleteAllCookies();
+        driver.browser().deleteAllCookies();
         driver.quit();
     }
 }

@@ -36,7 +36,7 @@ public class LoginBeforeCheckout {
 
     @AfterClass
     public void tearDown() {
-//        driver.browser().deleteAllCookies();
+        driver.browser().deleteAllCookies();
         driver.quit();
     }
 }
