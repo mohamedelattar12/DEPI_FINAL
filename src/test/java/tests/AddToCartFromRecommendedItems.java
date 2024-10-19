@@ -8,7 +8,7 @@ import pages.HomePage;
 
 import java.time.Duration;
 
-public class ViewCartBrandProducts {
+public class AddToCartFromRecommendedItems {
     public Driver driver;
 
     @BeforeClass
@@ -18,14 +18,15 @@ public class ViewCartBrandProducts {
     }
 
     @Test
-    public void checkThatProductQuantityIsAccurate() {
+    public void addToCartRecommendedItems(){
         new HomePage(driver)
-                .clickOnProductsLink()
-                .checkThatBrandsAreVisibleOnLeftSideBar()
-                .clickOnPoloBrandName()
-                .checkThatuserIsNavigatedToPoloBrandPage()
-                .clickOnMadameBrandName()
-                .checkThatuserIsNavigatedToMadameBrandPage();
+                .checkThatHomePageIsLoadedSuccessfully()
+                .scrollDownToBottom()
+                .checkThatRecommendedItemsTitleIsDisplayed()
+                .clickOnAddToCartBtnInRecommendedItems()
+                .clickOnViewCartBtnInRecommendedItems()
+                .checkThatViewCartPageIsLoadedSuccessfully()
+                .checkThatProductIsAdded();
     }
 
 
@@ -33,6 +34,8 @@ public class ViewCartBrandProducts {
     public void tearDown() {
         driver.browser().deleteAllCookies();
         driver.quit();
-    }
 
+
+    }
 }
+

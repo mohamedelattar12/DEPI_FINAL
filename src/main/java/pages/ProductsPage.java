@@ -45,6 +45,7 @@ public class ProductsPage {
         return this;
     }
 
+    @Step("Check that Products Page is loaded successfully")
     public ProductsPage checkThatProductsPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/products"));
         Assert.assertTrue(driver.element().isDisplayed(productsTitle));
@@ -53,26 +54,31 @@ public class ProductsPage {
         return this;
     }
 
+    @Step("Check that searched product is loaded successfully")
     public ProductsPage checkThatSearchedProductIsLoadedSuccessfully() {
         Assert.assertTrue(driver.element().isDisplayed(searchedProductTitle));
         Assert.assertEquals(driver.element().getTextOf(searchedProductTitle), "SEARCHED PRODUCTS");
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/products?search="));
-
         return this;
     }
 
-    public ProductsPage checkThatBrandsAreVisibleOnLeftSideBar() {
+
+    @Step("check that brands are visible on left Side bar")
+    public ProductsPage checkThatBrandsAreVisibleOnLeftSideBar(){
         Assert.assertTrue(driver.element().getTextOf(brands).contains("BRANDS"));
         return this;
     }
 
-    public ProductsPage checkThatuserIsNavigatedToPoloBrandPage() {
+    @Step("Check that user is navigated to Polo brand page")
+    public ProductsPage checkThatuserIsNavigatedToPoloBrandPage(){
         Assert.assertTrue(driver.element().getTextOf(poloBrandTitle).contains("POLO PRODUCTS"));
         Assert.assertTrue(driver.browser().getCurrentURL().contains("brand_products/Polo"));
         return this;
     }
 
-    public ProductsPage checkThatuserIsNavigatedToMadameBrandPage() {
+
+    @Step("Check that user is navigated to Madame brand page")
+    public ProductsPage checkThatuserIsNavigatedToMadameBrandPage(){
         Assert.assertTrue(driver.element().getTextOf(madameBrandTitle).contains("MADAME PRODUCTS"));
         Assert.assertTrue(driver.browser().getCurrentURL().contains("brand_products/Madame"));
         return this;
@@ -96,26 +102,31 @@ public class ProductsPage {
         return this;
     }
 
+    @Step("Check that the user can click on first product Link")
     public FirstProductPage clickOnFirstProduct() {
         driver.element().click(firstProductLink);
         return new FirstProductPage(driver);
     }
 
+    @Step("Check that the user can click on Polo brand name")
     public ProductsPage clickOnPoloBrandName() {
         driver.element().click(poloBrandName);
         return this;
     }
 
+    @Step("Check that user can click on Madam brand name")
     public ProductsPage clickOnMadameBrandName() {
         driver.element().click(madameBrandName);
         return this;
     }
 
+    @Step("Check that user can Search for product")
     public ProductsPage searchForProduct(String X) {
         driver.element().searchBar(productSearchbar, X);
         return this;
     }
 
+    @Step("Check that user can click on Search button")
     public ProductsPage clickOnSearchButton() {
         driver.element().click(productSearchButton);
         return this;
@@ -157,6 +168,7 @@ public class ProductsPage {
         return new ViewCartPage(driver);
     }
 
+    @Step("Check user can click on View Product button")
     public FirstProductPage clickOnViewProductButton() {
         driver.element().click(viewProduct);
         return new FirstProductPage(driver);

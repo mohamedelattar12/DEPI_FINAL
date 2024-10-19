@@ -2,6 +2,7 @@ package pages;
 
 import driverFactory.Driver;
 import elementActions.ElementActions;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -39,16 +40,15 @@ public class ContactUsPage {
 
     /*********************************  Assertions  *****************************************************/
 
+    @Step("Check that ContactUs Page is loaded successfully")
     public ContactUsPage checkThatContactUsPageIsLoadedSuccessfully() {
-
-//        fluentWait.until(ExpectedConditions.textToBe(fromTitle,"GET IN TOUCH"));
-
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/contact_us"));
         Assert.assertTrue(driver.element().isDisplayed(fromTitle));
         Assert.assertEquals(driver.element().getTextOf(fromTitle), "GET IN TOUCH");
         return this;
     }
 
+    @Step("Check that form should be submitted successfully")
     public ContactUsPage checkThatFormShouldBeSubmittedSuccessfully() {
         Assert.assertEquals(driver.element().getTextOf(successMessage), "Success! Your details have been submitted successfully.");
         return this;
@@ -56,6 +56,7 @@ public class ContactUsPage {
 
     /*********************************  Actions  *****************************************************/
 
+    @Step("Check that user can fill in contactUs from")
     public ContactUsPage fillInContactUsFrom(String name, String email, String subject, String message) {
         driver.element().fillField(nameField, name);
         driver.element().fillField(emailField, email);
@@ -64,12 +65,14 @@ public class ContactUsPage {
         return this;
     }
 
+    @Step("Check that user can click on Submit button")
     public ContactUsPage clickOnSubmitButton() {
         driver.element().click(submitButton);
         driver.get().switchTo().alert().accept();
         return this;
     }
 
+    @Step("Check that user can click on Home button")
     public HomePage clickOnHomeButton() {
         driver.element().click(homeButton);
         return new HomePage(driver);

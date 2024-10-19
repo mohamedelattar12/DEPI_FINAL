@@ -4,15 +4,17 @@ import driverFactory.Driver;
 import org.testng.annotations.*;
 import pages.HomePage;
 
+import java.time.Duration;
+
 public class ScrollUpWithArrowButtonTest {
     public Driver driver;
 
     @BeforeClass
     @Parameters(value = {"browserName"})
     public void setUp(@Optional("EDGE") String browserName){
-        driver = new Driver(browserName);
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com/");
+        driver = new Driver();
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+
     }
 
     @Test(priority = 1)
@@ -21,7 +23,7 @@ public class ScrollUpWithArrowButtonTest {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
                 .scrollDownToBottom()
-                .checkThatSubscriptionIsvIsVisible();
+                .checkThatSubscriptionIsVisible();
 
 
     }

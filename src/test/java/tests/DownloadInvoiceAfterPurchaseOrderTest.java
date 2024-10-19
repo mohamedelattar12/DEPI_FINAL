@@ -4,6 +4,8 @@ import driverFactory.Driver;
 import org.testng.annotations.*;
 import pages.*;
 
+import java.time.Duration;
+
 public class DownloadInvoiceAfterPurchaseOrderTest {
     public Driver driver;
 
@@ -12,11 +14,8 @@ public class DownloadInvoiceAfterPurchaseOrderTest {
     @BeforeClass
     @Parameters(value = {"browserName"})
     public void setUp(@Optional("EDGE") String browserName){
-        driver = new Driver(browserName);
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com/");
-
-
+        driver = new Driver();
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @Test(priority = 1)
@@ -36,7 +35,7 @@ public class DownloadInvoiceAfterPurchaseOrderTest {
     @Test(priority = 2,dependsOnMethods = "userCanAddItemToTheCard")
     public void userCanRegisterSuccessfully() {
         new LoginSignupPage(driver)
-                .fillInNameSingUp("Mariam12")
+                .fillInNameSingUpField("Mariam12")
                 .fillInEmailSingUpField("Test.Test2222@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()

@@ -1,7 +1,6 @@
 package tests;
 
 import driverFactory.Driver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -9,11 +8,8 @@ import pages.HomePage;
 
 import java.time.Duration;
 
-
-public class RegisterNewUser {
-   public Driver driver;
-    WebDriverWait wait;
-
+public class VerifyAddressDetailsInCheckoutPage {
+    public Driver driver;
 
     @BeforeClass
     public void setUp() {
@@ -21,36 +17,37 @@ public class RegisterNewUser {
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
-
-    @Test(priority = 1)
-    public void userCanRegisterSuccessfully() {
+    @Test
+    public void verifyAddressDetails() {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
-                .checkThatLoginLinkShouldBeDisplayed()
-                .clickOnLoginLink()
+                .clickOnLoginSignupBtn()
                 .checkThatUserIsNavigateToLoginSignUpPage()
-                .fillInNameSingUpField("Mariam")
-                .fillInEmailSingUpField("TestTest123456@gmail.com")
+                .fillInNameSingUpField("Ahmed")
+                .fillInEmailSingUpField("TestTest123456788@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
                 .fillInRegistrationForm()
                 .clickOnCreateAccount()
                 .checkThatSuccessMessageShouldBeDisplayed()
                 .clickOnContinueBtn()
-                .checkThatLoggedInAsUsernameIsDisplayed("Mariam")
-                .clickOnDeleteAccountLink()
+                .checkThatLoggedInAsUsernameIsDisplayed("Ahmed")
+                .clickOnFirstAddToCartButton()
+                .clickOnCartLink()
+                .checkThatViewCartPageIsLoadedSuccessfully()
+                .clickOnProceedToCheckOutButtonForRegisteredUser()
+                .checkAddressDetailsIsDisplayed()
+                .verifyThatDeliveryAddressSameAsAddressFilled()
+                .verifyThatBillingAddressSameAsAddressFilled()
+                .clickOnDeleteAccountBtn()
                 .checkThatAccountDeletedSuccessfully()
                 .clickOnContinueButton();
-
-        driver.browser().deleteAllCookies();
     }
-
 
     @AfterClass
     public void tearDown() {
         driver.browser().deleteAllCookies();
         driver.quit();
+
     }
-
-
 }
