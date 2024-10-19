@@ -56,8 +56,8 @@ public class CheckoutPage {
     @Step("Verify that the delivery address is same address filled")
     public CheckoutPage verifyThatDeliveryAddressSameAsAddressFilled() {
         Assert.assertTrue(driver.element().isDisplayed(yourDeliveryAddressTitle));
-        Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressFirstLastName),"Mariam"+" "+"Beshara");
-        Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressAddress1Address2),"Alex"+" "+"Alex");
+        Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressFirstLastName),". "+"Mariam"+" "+"Beshara");
+        Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressAddress1Address2),"Alex");
         Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressCityStatePostcode),"Alex"+" "+"Alex"+" "+"123456");
         Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressCountry),"Canada");
         Assert.assertEquals(driver.element().getTextOf(yourDeliveryAddressPhone),"01236985214");
@@ -67,8 +67,8 @@ public class CheckoutPage {
     @Step("Verify that the billing address is same address filled")
     public CheckoutPage verifyThatBillingAddressSameAsAddressFilled() {
         Assert.assertTrue(driver.element().isDisplayed(yourBillingAddressTitle));
-        Assert.assertEquals(driver.element().getTextOf(yourBillingAddressFirstLastName),"Mariam"+" "+"Beshara");
-        Assert.assertEquals(driver.element().getTextOf(yourBillingAddressAddress1Address2),"Alex"+" "+"Alex");
+        Assert.assertEquals(driver.element().getTextOf(yourBillingAddressFirstLastName),". "+"Mariam"+" "+"Beshara");
+        Assert.assertEquals(driver.element().getTextOf(yourBillingAddressAddress1Address2),"Alex");
         Assert.assertEquals(driver.element().getTextOf(yourBillingAddressCityStatePostcode),"Alex"+" "+"Alex"+" "+"123456");
         Assert.assertEquals(driver.element().getTextOf(yourBillingAddressCountry),"Canada");
         Assert.assertEquals(driver.element().getTextOf(yourBillingAddressPhone),"01236985214");
