@@ -4,7 +4,10 @@ import driverFactory.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
+import java.util.List;
 
 public class ProductsPage {
     private Driver driver;
@@ -33,6 +36,15 @@ public class ProductsPage {
     }
 
     /*********************************  Assertions  *****************************************************/
+    public ProductsPage checkThatAllTheProductsRelatedToSearchAreVisible(String searchedProduct) {
+        // Find multiple elements using a class name
+        List<WebElement> elements = driver.get().findElements(By.className("productinfo"));
+        for (int i = 0; i < elements.size(); i++) {
+            Assert.assertTrue(elements.get(i).getText().toLowerCase().contains(searchedProduct.toLowerCase()));
+        }
+        return this;
+    }
+
     public ProductsPage checkThatProductsPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/products"));
         Assert.assertTrue(driver.element().isDisplayed(productsTitle));
@@ -48,23 +60,41 @@ public class ProductsPage {
 
         return this;
     }
-    public ProductsPage checkThatBrandsAreVisibleOnLeftSideBar(){
+
+    public ProductsPage checkThatBrandsAreVisibleOnLeftSideBar() {
         Assert.assertTrue(driver.element().getTextOf(brands).contains("BRANDS"));
         return this;
     }
 
-    public ProductsPage checkThatuserIsNavigatedToPoloBrandPage(){
+    public ProductsPage checkThatuserIsNavigatedToPoloBrandPage() {
         Assert.assertTrue(driver.element().getTextOf(poloBrandTitle).contains("POLO PRODUCTS"));
         Assert.assertTrue(driver.browser().getCurrentURL().contains("brand_products/Polo"));
         return this;
     }
-    public ProductsPage checkThatuserIsNavigatedToMadameBrandPage(){
+
+    public ProductsPage checkThatuserIsNavigatedToMadameBrandPage() {
         Assert.assertTrue(driver.element().getTextOf(madameBrandTitle).contains("MADAME PRODUCTS"));
         Assert.assertTrue(driver.browser().getCurrentURL().contains("brand_products/Madame"));
         return this;
     }
 
     /*********************************  Actions  *****************************************************/
+    public ProductsPage addAllProductsInThePageToCart() {
+        // Find multiple elements using a class name
+        List<WebElement> elements = driver.get().findElements(By.className("add-to-cart"));
+        for (int i = 0; i < elements.size(); i = i + 2) {
+            System.out.println(i);
+            System.out.println(elements.get(i).getText());
+            elements.get(i).click();
+            driver.element().click(continueShoppingButton);
+        }
+        return this;
+    }
+
+    public ProductsPage clickOnSearchBar() {
+        driver.element().click(productSearchbar);
+        return this;
+    }
 
     public FirstProductPage clickOnFirstProduct() {
         driver.element().click(firstProductLink);
@@ -131,6 +161,8 @@ public class ProductsPage {
         driver.element().click(viewProduct);
         return new FirstProductPage(driver);
     }
+
+
 }
 
 
