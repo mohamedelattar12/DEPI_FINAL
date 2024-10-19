@@ -13,23 +13,29 @@ public class SearchProductsAndVerifyCartAfterLogin {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com");
+        driver = new Driver();
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
 
     @Test
-    public void checkThatProductQuantityIsAccurate(){
+    public void checkThatProductQuantityIsAccurate() throws InterruptedException {
         new HomePage(driver)
                 .clickOnProductsLink()
                 .checkThatProductsPageIsLoadedSuccessfully()
                 .clickOnSearchBar()
-                .searchForProduct("Men")
+                .searchForProduct("women")
                 .clickOnSearchButton()
-                .checkThatAllTheProductsRelatedToSearchAreVisible("Men")
-                .addAllProductsInThePageToCart();
+                .checkThatAllTheProductsRelatedToSearchAreVisible("women")
+                .addAllProductsInThePageToCart()
+                .clickOnCartButton()
+                .checkThatProductsAreVisibleInCart("women")
+                .clickOnLoginLink()
+                .fillInLoginEmail("moha@g.com")
+                .fillInLoginPassword("12345678")
+                .clickOnLoginButton()
+                .clickOnCartButton()
+                .checkThatProductsAreVisibleInCart("women");
     }
 
     @AfterClass

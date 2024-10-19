@@ -3,7 +3,10 @@ package pages;
 import driverFactory.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
+import java.util.List;
 
 public class ViewCartPage {
 
@@ -39,6 +42,15 @@ public class ViewCartPage {
     }
 
     /**********************************  Assertions  ****************************************/
+
+    public HomePage checkThatProductsAreVisibleInCart(String product) {
+        // Find multiple elements using a class name
+        List<WebElement> elements = driver.get().findElements(By.className("cart_description"));
+        for (int i = 0; i < elements.size(); i++) {
+            Assert.assertTrue(elements.get(i).getText().toLowerCase().contains(product.toLowerCase()));
+        }
+        return new HomePage(driver);
+    }
 
     @Step("Check that View Cart Page is loaded successfully")
     public ViewCartPage checkThatViewCartPageIsLoadedSuccessfully() {

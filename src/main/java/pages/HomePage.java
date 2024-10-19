@@ -38,6 +38,8 @@ public class HomePage {
     By recommendedItemsTitle = By.xpath("//div[@class=\"recommended_items\"]/h2");
     By AddToCartBtnInRecommendedItems = By.cssSelector("#recommended-item-carousel > div > div.item.active > div:nth-child(2) > div > div > div > a");
     By ViewCartBtnInRecommendedItems = By.xpath("//a[@href=\"/view_cart\"]/u");
+    By cart = By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[3]/a");
+
 
 
     public HomePage(Driver driver) {
@@ -108,7 +110,10 @@ public class HomePage {
     }
 
     /*********************************  Actions  *****************************************************/
-
+    public ViewCartPage clickOnCartButton() {
+        driver.element().click(cart);
+        return new ViewCartPage(driver);
+    }
     @Step("Check that user can click on login link")
     public LoginSignupPage clickOnLoginLink() {
         driver.element().click(loginLink);

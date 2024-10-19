@@ -30,6 +30,8 @@ public class ProductsPage {
     By poloBrandTitle = By.xpath("/html/body/section/div/div[2]/div[2]/div/h2");
     By madameBrandName = By.cssSelector("body > section > div > div.row > div.col-sm-3 > div > div.brands_products > div > ul > li:nth-child(3) > a");
     By madameBrandTitle = By.xpath("/html/body/section/div/div[2]/div[2]/div/h2");
+    By continueShoppingButtonCss = By.cssSelector("#cartModal > div > div > div.modal-footer > button");
+    By cart = By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[3]/a");
 
     public ProductsPage(Driver driver) {
         this.driver = driver;
@@ -64,13 +66,13 @@ public class ProductsPage {
 
 
     @Step("check that brands are visible on left Side bar")
-    public ProductsPage checkThatBrandsAreVisibleOnLeftSideBar(){
+    public ProductsPage checkThatBrandsAreVisibleOnLeftSideBar() {
         Assert.assertTrue(driver.element().getTextOf(brands).contains("BRANDS"));
         return this;
     }
 
     @Step("Check that user is navigated to Polo brand page")
-    public ProductsPage checkThatuserIsNavigatedToPoloBrandPage(){
+    public ProductsPage checkThatuserIsNavigatedToPoloBrandPage() {
         Assert.assertTrue(driver.element().getTextOf(poloBrandTitle).contains("POLO PRODUCTS"));
         Assert.assertTrue(driver.browser().getCurrentURL().contains("brand_products/Polo"));
         return this;
@@ -78,21 +80,23 @@ public class ProductsPage {
 
 
     @Step("Check that user is navigated to Madame brand page")
-    public ProductsPage checkThatuserIsNavigatedToMadameBrandPage(){
+    public ProductsPage checkThatuserIsNavigatedToMadameBrandPage() {
         Assert.assertTrue(driver.element().getTextOf(madameBrandTitle).contains("MADAME PRODUCTS"));
         Assert.assertTrue(driver.browser().getCurrentURL().contains("brand_products/Madame"));
         return this;
     }
 
     /*********************************  Actions  *****************************************************/
-    public ProductsPage addAllProductsInThePageToCart() {
+    public ViewCartPage clickOnCartButton() {
+        driver.element().click(cart);
+        return new ViewCartPage(driver);
+    }
+    public ProductsPage addAllProductsInThePageToCart() throws InterruptedException {
         // Find multiple elements using a class name
         List<WebElement> elements = driver.get().findElements(By.className("add-to-cart"));
-        for (int i = 0; i < elements.size(); i = i + 2) {
-            System.out.println(i);
-            System.out.println(elements.get(i).getText());
-            elements.get(i).click();
-            driver.element().click(continueShoppingButton);
+        for (int i = 0; i < elements.size(); i=i+2) {
+                elements.get(i).click();
+                driver.element().click(continueShoppingButtonCss);
         }
         return this;
     }
