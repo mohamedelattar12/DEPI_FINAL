@@ -27,6 +27,9 @@ public class HomePage {
     By loggedInAsUser = By.xpath("//b");
     By cartLink = By.xpath("(//a[@href=\"/view_cart\"])[1]");
     By signupLoginBtn = By.xpath("//a[@href=\"/login\"]");
+    By leftSideBar = By.xpath("(//h2)[4]");
+    By womenCategory = By.xpath("//*[@id=\"accordian\"]/div[1]/div[1]/h4/a");
+    By topsWomenCategory = By.xpath("//*[@id=\"Women\"]/div/ul/li[2]/a");
 
 
 
@@ -68,6 +71,11 @@ public class HomePage {
     }
     public HomePage checkThatLoggedInAsUsernameIsDisplayed() {
         Assert.assertTrue(driver.element().isDisplayed(loggedInAsUser));
+        return this;
+    }
+
+    public HomePage checkThatCategoriesAreVisibleOnLeftSideBar() {
+        Assert.assertEquals(driver.element().getTextOf(leftSideBar), "CATEGORY");
         return this;
     }
 
@@ -141,6 +149,16 @@ public class HomePage {
     public LoginSignupPage clickOnLoginSignupBtn() {
         driver.element().click(signupLoginBtn);
         return new LoginSignupPage(driver);
+    }
+
+    public HomePage clickOnWomenCategory() {
+        driver.element().click(womenCategory);
+        return this;
+    }
+
+    public WomenProductPage clickOnTopsWomenCategory() {
+        driver.element().click(topsWomenCategory);
+        return new WomenProductPage(driver);
     }
 
 }

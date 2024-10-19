@@ -29,6 +29,9 @@ public class ViewCartPage {
     By emailField = By.id("susbscribe_email");
     By submitEmailButton = By.id("subscribe");
     By SuccessMessage = By.id("success-subscribe");
+    By removeProductBtn = By.xpath("//i[@class=\"fa fa-times\"]");
+    By cartIsEmptyTitle = By.xpath("//*[@id=\"empty_cart\"]/p/b");
+
 
 
 
@@ -83,6 +86,11 @@ public class ViewCartPage {
         return this;
     }
 
+    public ViewCartPage checkThatProductRemovedFromTheCartSuccessfully() {
+        Assert.assertEquals(driver.element().getTextOf(cartIsEmptyTitle), "Cart is empty!");
+        return this;
+    }
+
 
     /*********************************  Actions  *****************************************************/
 
@@ -112,4 +120,10 @@ public class ViewCartPage {
        driver.element().click(submitEmailButton);
      return this;
     }
+
+    public ViewCartPage clickOnremoveProductBtn(){
+        driver.element().click(removeProductBtn);
+        return this;
+    }
+
 }
