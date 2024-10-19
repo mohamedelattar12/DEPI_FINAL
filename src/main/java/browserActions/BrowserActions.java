@@ -83,7 +83,12 @@ public class BrowserActions {
 
 
     public BrowserActions scrollToBottom() {
-        new Actions(driver).scrollByAmount(0, 2500).build().perform();
+        new Actions(driver).scrollByAmount(0, 10000).build().perform();
+        return this;
+    }
+
+    public BrowserActions scrollToTop() {
+        new Actions(driver).scrollByAmount(0, -10000).build().perform();
         return this;
     }
 

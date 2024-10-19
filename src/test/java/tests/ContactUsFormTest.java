@@ -1,29 +1,27 @@
 package tests;
 
 import driverFactory.Driver;
-import org.openqa.selenium.By;
 import org.testng.annotations.*;
 import pages.HomePage;
 import utilities.ScreenShotManager;
 
 import java.time.Duration;
 
-public class TestParallel {
-    //    public Driver driver;
-    public ThreadLocal<Driver> driver;
+public class ContactUsFormTest {
+    public Driver driver;
+//   public ThreadLocal<Driver> driver;
 
     @BeforeClass
     @Parameters(value = {"browserName"})
     public void SetUp(@Optional("CHROME") String browserName) {
-        driver = new ThreadLocal<>();
-        driver.set(new Driver());
-        driver.get().get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver = new Driver();
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
     }
 
     @Test(priority = 1)
     public void contactUsTest() {
-        new HomePage(driver.get())
+        new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
                 .clickOnContactUsLink()
                 .checkThatContactUsPageIsLoadedSuccessfully()
@@ -32,14 +30,15 @@ public class TestParallel {
                 .checkThatFormShouldBeSubmittedSuccessfully()
                 .clickOnHomeButton()
                 .checkThatHomePageIsLoadedSuccessfully();
-        ScreenShotManager.CaptureScreenShot(driver.get().get(), "ContactUs");
+        ScreenShotManager.CaptureScreenShot(driver.get(), "ContactUs");
 
 
     }
 
+
     @AfterClass
     public void tearDown() {
-        driver.get().browser().deleteAllCookies();
-        driver.get().quit();
+        driver.browser().deleteAllCookies();
+        driver.quit();
     }
 }

@@ -8,8 +8,7 @@ import pages.HomePage;
 
 import java.time.Duration;
 
-
-public class VerifySubscriptionInCartPageTest {
+public class ViewCartBrandProducts {
     public Driver driver;
 
     @BeforeClass
@@ -19,19 +18,21 @@ public class VerifySubscriptionInCartPageTest {
     }
 
     @Test
-    public void checkThatUserCanSubscribeFromCartPage(){
+    public void checkThatProductQuantityIsAccurate() {
         new HomePage(driver)
-                .checkThatHomePageIsLoadedSuccessfully()
-                .clickOnCartLink()
-                .checkSubscriptionIsVisibleInCartPage()
-                .fillEmailField("TestTest333@gmail.com")
-                .clickOnEmailArrowButton()
-                .checkThatSuccessMessageIsSuccessfullyDisplayed();
+                .clickOnProductsLink()
+                .checkThatBrandsAreVisibleOnLeftSideBar()
+                .clickOnPoloBrandName()
+                .checkThatuserIsNavigatedToPoloBrandPage()
+                .clickOnMadameBrandName()
+                .checkThatuserIsNavigatedToMadameBrandPage();
     }
+
 
     @AfterClass
     public void tearDown() {
         driver.browser().deleteAllCookies();
         driver.quit();
     }
+
 }

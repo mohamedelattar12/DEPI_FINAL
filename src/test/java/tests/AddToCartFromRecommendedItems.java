@@ -8,8 +8,7 @@ import pages.HomePage;
 
 import java.time.Duration;
 
-
-public class VerifySubscriptionInCartPageTest {
+public class AddToCartFromRecommendedItems {
     public Driver driver;
 
     @BeforeClass
@@ -19,19 +18,24 @@ public class VerifySubscriptionInCartPageTest {
     }
 
     @Test
-    public void checkThatUserCanSubscribeFromCartPage(){
+    public void addToCartRecommendedItems(){
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
-                .clickOnCartLink()
-                .checkSubscriptionIsVisibleInCartPage()
-                .fillEmailField("TestTest333@gmail.com")
-                .clickOnEmailArrowButton()
-                .checkThatSuccessMessageIsSuccessfullyDisplayed();
+                .scrollDownToBottom()
+                .checkThatRecommendedItemsTitleIsDisplayed()
+                .clickOnAddToCartBtnInRecommendedItems()
+                .clickOnViewCartBtnInRecommendedItems()
+                .checkThatViewCartPageIsLoadedSuccessfully()
+                .checkThatProductIsAdded();
     }
+
 
     @AfterClass
     public void tearDown() {
         driver.browser().deleteAllCookies();
         driver.quit();
+
+
     }
 }
+

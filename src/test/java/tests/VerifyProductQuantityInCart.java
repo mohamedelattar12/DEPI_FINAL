@@ -6,18 +6,19 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
+import java.time.Duration;
+
 public class VerifyProductQuantityInCart {
     public Driver driver;
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com");
+        driver = new Driver();
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @Test
-    public void checkThatProductQuantityIsAccurate(){
+    public void checkThatProductQuantityIsAccurate() {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully().clickOnViewProductButton().
                 checkThatUseNavigateToFirstProductPageSuccessfully().IncreaseProductQuantity()

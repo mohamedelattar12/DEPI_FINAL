@@ -6,14 +6,15 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
+import java.time.Duration;
+
 public class RegisterWhileCheckout {
     public Driver driver;
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.browser().maximizeWindows();
-        driver.browser().navigateToURL("https://automationexercise.com");
+        driver = new Driver();
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @Test
@@ -21,11 +22,11 @@ public class RegisterWhileCheckout {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully().clickOnFirstAddToCartButton().
                 clickOnViewCartButton().checkThatViewCartPageIsLoadedSuccessfully().
-                clickOnProceedToCheckOut().clickOnRegisterLoginBtn().fillInNameSingUp("esraa")
-                .fillInEmailSingUpButton("esraf123@gmail.com").clickOnSignUpButton().fillInRegistrationForm()
+                clickOnProceedToCheckOutForNonRegisteredUser().clickOnRegisterLoginBtn().fillInNameSingUpField("esraa")
+                .fillInEmailSingUpField("esraf123@gmail.com").clickOnSignUpButton().fillInRegistrationForm()
                 .clickOnCreateAccount().checkThatSuccessMessageShouldBeDisplayed().
-                clickOnContinueBtn().checkThatLoggedInAsUsernameIsDisplayed().clickOnCartLink()
-                .clickonproceedtocheckoutbtn().CheckAddressDetailsIsDisplayed().CheckReviewOrderIsDisplayed()
+                clickOnContinueBtn().checkThatLoggedInAsUsernameIsDisplayed("esraa").clickOnCartLink()
+                .clickOnProceedToCheckOutButtonForRegisteredUser().checkAddressDetailsIsDisplayed().checkReviewOrderIsDisplayed()
                 .fillInTextArea().clickOnPlaceOrderBtn().fillPaymentForm().clickOnPayAndConfirmBtn().
                 checkSuccessMessageIsDisplayed().clickOnDeleteAccountBtn().
                 checkThatAccountDeletedSuccessfully().clickOnContinueButton();

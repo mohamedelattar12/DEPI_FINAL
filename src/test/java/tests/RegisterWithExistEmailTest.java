@@ -8,9 +8,10 @@ import pages.HomePage;
 
 import java.time.Duration;
 
-
-public class VerifySubscriptionInCartPageTest {
+public class RegisterWithExistEmailTest {
     public Driver driver;
+    double num = Math.random();
+
 
     @BeforeClass
     public void setUp() {
@@ -18,15 +19,18 @@ public class VerifySubscriptionInCartPageTest {
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
+
     @Test
-    public void checkThatUserCanSubscribeFromCartPage(){
+    public void userCannotLoggInWithInCorrectEmailAndPassword() {
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
-                .clickOnCartLink()
-                .checkSubscriptionIsVisibleInCartPage()
-                .fillEmailField("TestTest333@gmail.com")
-                .clickOnEmailArrowButton()
-                .checkThatSuccessMessageIsSuccessfullyDisplayed();
+                .clickOnLoginLink()
+                .checkThatUserIsNavigateToLoginSignUpPage()
+                .fillInNameSingUpField("Mariam")
+                .fillInEmailSingUpField("TestTest12345@gmail.com")
+                .clickOnSignUpButtonUsingExistEmail()
+                .checkThatErrorMessageIsVisibleWhenUseExistEmail();
+
     }
 
     @AfterClass

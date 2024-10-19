@@ -31,14 +31,14 @@ public class ElementActions {
 
     public ElementActions fillField(By locator, String text) {
         clearFiled(locator);
-      System.out.println("Fill field  " + locator.toString() + " with " + text);
+        System.out.println("Fill field  " + locator.toString() + " with " + text);
         driver.findElement(locator).sendKeys(text);
         return this;
     }
 
     public ElementActions searchBar(By locator, String text) {
         clearFiled(locator);
-        System.out.println("Type \"" +text+ "\" into "+"\" Search Product\".");
+        System.out.println("Type \"" + text + "\" into " + "\" Search Product\".");
         driver.findElement(locator).sendKeys(text);
         return this;
     }

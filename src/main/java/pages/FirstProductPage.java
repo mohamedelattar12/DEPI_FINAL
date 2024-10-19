@@ -1,6 +1,7 @@
 package pages;
 
 import driverFactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -14,8 +15,8 @@ public class FirstProductPage {
     By condition = By.xpath("(//P)[5]");
     By brand = By.xpath("(//P)[6]");
     By quantity = By.xpath("//input[@id=\"quantity\"]");
-    By addToCartBtn= By.xpath("//button[@class=\"btn btn-default cart\"]");
-    By viewCartBtn= By.xpath("(//a[@href=\"/view_cart\"])[2]");
+    By addToCartBtn = By.xpath("//button[@class=\"btn btn-default cart\"]");
+    By viewCartBtn = By.xpath("(//a[@href=\"/view_cart\"])[2]");
     By reviewTitle = By.xpath("//a[@href=\"#reviews\"]");
     By reviewerName = By.id("name");
     By reviewerEmail = By.id("email");
@@ -28,6 +29,8 @@ public class FirstProductPage {
     }
 
     /*********************************  Assertions  *****************************************************/
+
+    @Step("Check that use navigate to First Product Page successfully")
     public FirstProductPage checkThatUseNavigateToFirstProductPageSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/product_details/1"));
         driver.element().isDisplayed(productName);
@@ -36,48 +39,62 @@ public class FirstProductPage {
         driver.element().isDisplayed(availability);
         driver.element().isDisplayed(condition);
         driver.element().isDisplayed(brand);
-
         return this;
     }
 
-    public FirstProductPage checkThatWriteYourReviewIsVisible(){
+    @Step("Check that write your review is visible")
+    public FirstProductPage checkThatWriteYourReviewIsVisible() {
         Assert.assertEquals(driver.element().getTextOf(reviewTitle), "WRITE YOUR REVIEW");
         return this;
     }
 
-    public FirstProductPage checkThatSuccessMsgForReviewIsVisible(){
+    @Step("Check that success message for review is visible")
+    public FirstProductPage checkThatSuccessMsgForReviewIsVisible() {
         Assert.assertEquals(driver.element().getTextOf(reviewSuccessMsg), "Thank you for your review.");
         return this;
     }
 
     /*********************************  Actions  *****************************************************/
 
+    @Step("Check that user can increase product quantity")
     public FirstProductPage IncreaseProductQuantity() {
         driver.element().fillField(quantity, "4");
         return this;
     }
+
+    @Step("Check that user can click on Add To Cart button")
     public FirstProductPage ClickOnAddToCartBtn() {
         driver.element().click(addToCartBtn);
         return this;
     }
+
+    @Step("Check that user can click on Reviewer Submit button")
     public FirstProductPage ClickOnReviewerSubmitBtn() {
         driver.element().click(reviewerSubmitBtn);
         return this;
     }
+
+    @Step("Check that user can click on View Cart button")
     public ViewCartPage ClickOnViewCartBtn() {
         driver.element().click(viewCartBtn);
         return new ViewCartPage(driver);
     }
+
+    @Step("Check that user can fill in reviewer name")
     public FirstProductPage fillInReviewerName(String name) {
-        driver.element().fillField(reviewerName,name);
+        driver.element().fillField(reviewerName, name);
         return this;
     }
+
+    @Step("Check that user can fill in reviewer email")
     public FirstProductPage fillInReviewerEmail(String email) {
-        driver.element().fillField(reviewerEmail,email);
+        driver.element().fillField(reviewerEmail, email);
         return this;
     }
+
+    @Step("Check that user can fill in reviewer review")
     public FirstProductPage fillInReviewerReview(String review) {
-        driver.element().fillField(reviewerReview,review);
+        driver.element().fillField(reviewerReview, review);
         return this;
     }
 

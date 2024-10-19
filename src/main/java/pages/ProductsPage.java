@@ -22,13 +22,19 @@ public class ProductsPage {
     By clickOnSecondProductAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[3]");
     By viewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
     By viewProduct = By.xpath("//a[@href=\"/product_details/1\"]");
-
+    By brands = By.cssSelector("body > section:nth-child(3) > div > div > div.col-sm-3 > div > div.brands_products > h2");
+    By poloBrandName = By.cssSelector("body > section:nth-child(3) > div > div > div.col-sm-3 > div > div.brands_products > div > ul > li:nth-child(1) > a");
+    By poloBrandTitle = By.xpath("/html/body/section/div/div[2]/div[2]/div/h2");
+    By madameBrandName = By.cssSelector("body > section > div > div.row > div.col-sm-3 > div > div.brands_products > div > ul > li:nth-child(3) > a");
+    By madameBrandTitle = By.xpath("/html/body/section/div/div[2]/div[2]/div/h2");
 
     public ProductsPage(Driver driver) {
         this.driver = driver;
     }
 
     /*********************************  Assertions  *****************************************************/
+
+    @Step("Check that Products Page is loaded successfully")
     public ProductsPage checkThatProductsPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/products"));
         Assert.assertTrue(driver.element().isDisplayed(productsTitle));
@@ -37,27 +43,61 @@ public class ProductsPage {
         return this;
     }
 
+    @Step("Check that searched product is loaded successfully")
     public ProductsPage checkThatSearchedProductIsLoadedSuccessfully() {
         Assert.assertTrue(driver.element().isDisplayed(searchedProductTitle));
         Assert.assertEquals(driver.element().getTextOf(searchedProductTitle), "SEARCHED PRODUCTS");
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/products?search="));
-
         return this;
     }
 
+    @Step("check that brands are visible on left Side bar")
+    public ProductsPage checkThatBrandsAreVisibleOnLeftSideBar(){
+        Assert.assertTrue(driver.element().getTextOf(brands).contains("BRANDS"));
+        return this;
+    }
+
+    @Step("Check that user is navigated to Polo brand page")
+    public ProductsPage checkThatuserIsNavigatedToPoloBrandPage(){
+        Assert.assertTrue(driver.element().getTextOf(poloBrandTitle).contains("POLO PRODUCTS"));
+        Assert.assertTrue(driver.browser().getCurrentURL().contains("brand_products/Polo"));
+        return this;
+    }
+
+    @Step("Check that user is navigated to Madame brand page")
+    public ProductsPage checkThatuserIsNavigatedToMadameBrandPage(){
+        Assert.assertTrue(driver.element().getTextOf(madameBrandTitle).contains("MADAME PRODUCTS"));
+        Assert.assertTrue(driver.browser().getCurrentURL().contains("brand_products/Madame"));
+        return this;
+    }
 
     /*********************************  Actions  *****************************************************/
 
+    @Step("Check that the user can click on first product Link")
     public FirstProductPage clickOnFirstProduct() {
         driver.element().click(firstProductLink);
         return new FirstProductPage(driver);
     }
 
+    @Step("Check that the user can click on Polo brand name")
+    public ProductsPage clickOnPoloBrandName() {
+        driver.element().click(poloBrandName);
+        return this;
+    }
+
+    @Step("Check that user can click on Madam brand name")
+    public ProductsPage clickOnMadameBrandName() {
+        driver.element().click(madameBrandName);
+        return this;
+    }
+
+    @Step("Check that user can Search for product")
     public ProductsPage searchForProduct(String X) {
         driver.element().searchBar(productSearchbar, X);
         return this;
     }
 
+    @Step("Check that user can click on Search button")
     public ProductsPage clickOnSearchButton() {
         driver.element().click(productSearchButton);
         return this;
@@ -99,6 +139,7 @@ public class ProductsPage {
         return new ViewCartPage(driver);
     }
 
+    @Step("Check user can click on View Product button")
     public FirstProductPage clickOnViewProductButton() {
         driver.element().click(viewProduct);
         return new FirstProductPage(driver);
