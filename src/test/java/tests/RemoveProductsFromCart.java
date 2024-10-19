@@ -21,7 +21,7 @@ public class RemoveProductsFromCart {
                 .clickOnLoginButton()
                 .checkThatLoggedInAsUsernameIsDisplayed("Doaa")
                 .clickOnFirstAddToCartButton().clickOnCartLink()
-                .checkThatViewCartPageIsLoadedSuccessfully().clickOnremoveProductBtn()
+                .checkThatViewCartPageIsLoadedSuccessfully().clickOnRemoveProductBtn()
                 .checkThatProductRemovedFromTheCartSuccessfully();
 
 

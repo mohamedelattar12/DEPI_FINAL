@@ -21,7 +21,7 @@ public class ViewCategoryProducts {
                 .checkThatCategoriesAreVisibleOnLeftSideBar()
                 .clickOnWomenCategory().clickOnTopsWomenCategory()
                 .checkThatCategoryPageIsLoadedSuccessfully()
-                .clickOnMenCategory().clickOnjeansMenCategory()
+                .clickOnMenCategory().clickOnJeansMenCategory()
                 .checkThatUserIsNavigatedToMenProductsPageSuccessfully();
 
 

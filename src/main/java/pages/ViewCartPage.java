@@ -36,13 +36,13 @@ public class ViewCartPage {
     By cartIsEmptyTitle = By.xpath("//*[@id=\"empty_cart\"]/p/b");
 
 
-
     public ViewCartPage(Driver driver) {
         this.driver = driver;
     }
 
     /**********************************  Assertions  ****************************************/
 
+    @Step("Check that products are visible in Cart")
     public HomePage checkThatProductsAreVisibleInCart(String product) {
         // Find multiple elements using a class name
         List<WebElement> elements = driver.get().findElements(By.className("cart_description"));
@@ -102,6 +102,7 @@ public class ViewCartPage {
         return this;
     }
 
+    @Step("check that product removed from the Cart successfully")
     public ViewCartPage checkThatProductRemovedFromTheCartSuccessfully() {
         Assert.assertEquals(driver.element().getTextOf(cartIsEmptyTitle), "Cart is empty!");
         return this;
@@ -140,7 +141,8 @@ public class ViewCartPage {
         return this;
     }
 
-    public ViewCartPage clickOnremoveProductBtn(){
+    @Step("Check that user can click on Remove Product Button")
+    public ViewCartPage clickOnRemoveProductBtn() {
         driver.element().click(removeProductBtn);
         return this;
     }
