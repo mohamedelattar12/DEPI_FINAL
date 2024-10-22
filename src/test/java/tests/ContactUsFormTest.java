@@ -8,20 +8,21 @@ import utilities.ScreenShotManager;
 import java.time.Duration;
 
 public class ContactUsFormTest {
-    public Driver driver;
-//   public ThreadLocal<Driver> driver;
+//    public Driver driver;
+  public ThreadLocal<Driver> driver;
 
     @BeforeClass
     @Parameters(value = {"browserName"})
     public void SetUp(@Optional("CHROME") String browserName) {
-        driver = new Driver();
-        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver = new ThreadLocal<>();
+        driver.set(new Driver(browserName));
+        driver.get().get().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
     }
 
     @Test(priority = 1)
     public void contactUsTest() {
-        new HomePage(driver)
+        new HomePage(driver.get())
                 .checkThatHomePageIsLoadedSuccessfully()
                 .clickOnContactUsLink()
                 .checkThatContactUsPageIsLoadedSuccessfully()
@@ -30,7 +31,7 @@ public class ContactUsFormTest {
                 .checkThatFormShouldBeSubmittedSuccessfully()
                 .clickOnHomeButton()
                 .checkThatHomePageIsLoadedSuccessfully();
-        ScreenShotManager.CaptureScreenShot(driver.get(), "ContactUs");
+        ScreenShotManager.CaptureScreenShot(driver.get().get(), "ContactUs");
 
 
     }
@@ -38,7 +39,7 @@ public class ContactUsFormTest {
 
     @AfterClass
     public void tearDown() {
-        driver.browser().deleteAllCookies();
-        driver.quit();
+        driver.get().browser().deleteAllCookies();
+        driver.get().quit();
     }
 }
