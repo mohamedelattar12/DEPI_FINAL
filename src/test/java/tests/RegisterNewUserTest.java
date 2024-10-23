@@ -10,7 +10,7 @@ import pages.HomePage;
 import java.time.Duration;
 
 
-public class RegisterNewUser {
+public class RegisterNewUserTest {
    public Driver driver;
     WebDriverWait wait;
 
