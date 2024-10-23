@@ -20,9 +20,7 @@
 							"\r",
 							"pm.test(\"Content-Type is present\", function () {\r",
 							"    pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"\r",
-							"pm.environment.set(\"variable_key\", \"variable_value\");"
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -619,7 +617,7 @@
 			"response": []
 		},
 		{
-			"name": "API 12: POST To Verify Login with invalid details",
+			"name": "API 12: POST To Verify Login with valid details",
 			"event": [
 				{
 					"listen": "test",
