@@ -8,7 +8,7 @@ import pages.HomePage;
 
 import java.time.Duration;
 
-public class VerifyAddressDetailsInCheckoutPage {
+public class VerifyAddressDetailsInCheckoutPageTest {
     public Driver driver;
 
     @BeforeClass

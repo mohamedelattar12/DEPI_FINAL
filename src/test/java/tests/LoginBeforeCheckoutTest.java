@@ -6,24 +6,30 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
-public class RemoveProductsFromCart {
+public class LoginBeforeCheckoutTest {
     public Driver driver;
 
     @BeforeClass
     public void setUp() {
         driver = new Driver();
+
     }
 
     @Test
-    public void checkThatUserCanRemoveProductsFromCartSuccessfully() {
+    public void checkThatUserCanLoginBeforeCheckoutSuccessfully() {
         new HomePage(driver).checkThatHomePageIsLoadedSuccessfully().clickOnLoginLink()
                 .fillInLoginEmail("doaa121093@gmail.com").fillInLoginPassword("123456")
                 .clickOnLoginButton()
                 .checkThatLoggedInAsUsernameIsDisplayed("Doaa")
-                .clickOnFirstAddToCartButton().clickOnCartLink()
-                .checkThatViewCartPageIsLoadedSuccessfully().clickOnRemoveProductBtn()
-                .checkThatProductRemovedFromTheCartSuccessfully();
-
+                .clickOnFirstAddToCartButton()
+                .clickOnCartLink()
+                .checkThatViewCartPageIsLoadedSuccessfully()
+                .clickOnProceedToCheckOutButtonForRegisteredUser()
+//                .clickOnProceedToCheckOutButtonForRegisteredUser()
+//                .CheckAddressDetailsIsDisplayed()
+//                .CheckReviewOrderIsDisplayed()
+                .fillInTextArea().clickOnPlaceOrderBtn().fillPaymentForm().
+                clickOnPayAndConfirmBtn().checkSuccessMessageIsDisplayed();
 
     }
 
