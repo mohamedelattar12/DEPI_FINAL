@@ -8,7 +8,7 @@ import pages.HomePage;
 
 import java.time.Duration;
 
-public class ViewCartBrandProducts {
+public class ViewCartBrandProductsTest {
     public Driver driver;
 
     @BeforeClass

@@ -8,7 +8,7 @@ import pages.HomePage;
 
 import java.time.Duration;
 
-public class AddReviewOnProduct {
+public class AddToCartFromRecommendedItemsTest {
     public Driver driver;
 
     @BeforeClass
@@ -18,18 +18,15 @@ public class AddReviewOnProduct {
     }
 
     @Test
-    public void writeReviewOnProduct(){
+    public void addToCartRecommendedItems(){
         new HomePage(driver)
                 .checkThatHomePageIsLoadedSuccessfully()
-                .clickOnProductsLink()
-                .checkThatProductsPageIsLoadedSuccessfully()
-                .clickOnViewProductButton()
-                .checkThatWriteYourReviewIsVisible()
-                .fillInReviewerName("Ahmed")
-                .fillInReviewerEmail("TestTest122@gmail.com")
-                .fillInReviewerReview("This is good quality at a good price.")
-                .ClickOnReviewerSubmitBtn()
-                .checkThatSuccessMsgForReviewIsVisible();
+                .scrollDownToBottom()
+                .checkThatRecommendedItemsTitleIsDisplayed()
+                .clickOnAddToCartBtnInRecommendedItems()
+                .clickOnViewCartBtnInRecommendedItems()
+                .checkThatViewCartPageIsLoadedSuccessfully()
+                .checkThatProductIsAdded();
     }
 
 

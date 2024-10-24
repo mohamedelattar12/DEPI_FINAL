@@ -1,6 +1,7 @@
 package pages;
 
 import driverFactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -13,34 +14,35 @@ public class WomenProductPage {
     By menCategory = By.xpath("//*[@id=\"accordian\"]/div[2]/div[1]/h4/a");
 
 
-
     public WomenProductPage(Driver driver) {
         this.driver = driver;
     }
 
     /**********************************  Assertions  ****************************************/
 
-
-    public WomenProductPage checkThatCategoryPageIsLoadedSuccessfully(){
+    @Step("Check that Category page is loaded successfully")
+    public WomenProductPage checkThatCategoryPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/category_products/2"));
         Assert.assertTrue(driver.element().isDisplayed(topsProductsTitle));
         return this;
     }
 
-    public WomenProductPage checkThatUserIsNavigatedToMenProductsPageSuccessfully(){
+    @Step("Check that user is navigated to Men Products page successfully")
+    public WomenProductPage checkThatUserIsNavigatedToMenProductsPageSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/category_products/6"));
         return this;
     }
 
 
     /*********************************  Actions  *****************************************************/
-
+    @Step("Check that user can click on Men category")
     public WomenProductPage clickOnMenCategory() {
         driver.element().click(menCategory);
         return this;
     }
 
-    public WomenProductPage clickOnjeansMenCategory(){
+    @Step("Check that user can click on Jeans Men category")
+    public WomenProductPage clickOnJeansMenCategory() {
         driver.element().click(jeansMenCategory);
         return this;
     }

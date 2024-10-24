@@ -38,6 +38,8 @@ public class ProductsPage {
     }
 
     /*********************************  Assertions  *****************************************************/
+
+    @Step("Check that all the products related to search are visible")
     public ProductsPage checkThatAllTheProductsRelatedToSearchAreVisible(String searchedProduct) {
         // Find multiple elements using a class name
         List<WebElement> elements = driver.get().findElements(By.className("productinfo"));
@@ -87,20 +89,25 @@ public class ProductsPage {
     }
 
     /*********************************  Actions  *****************************************************/
+
+    @Step("Check that user can click on Cart button")
     public ViewCartPage clickOnCartButton() {
         driver.element().click(cart);
         return new ViewCartPage(driver);
     }
+
+    @Step("Check that user can add all products in the page to Cart")
     public ProductsPage addAllProductsInThePageToCart() throws InterruptedException {
         // Find multiple elements using a class name
         List<WebElement> elements = driver.get().findElements(By.className("add-to-cart"));
-        for (int i = 0; i < elements.size(); i=i+2) {
-                elements.get(i).click();
-                driver.element().click(continueShoppingButtonCss);
+        for (int i = 0; i < elements.size(); i = i + 2) {
+            elements.get(i).click();
+            driver.element().click(continueShoppingButtonCss);
         }
         return this;
     }
 
+    @Step("Check that user can click on search bar")
     public ProductsPage clickOnSearchBar() {
         driver.element().click(productSearchbar);
         return this;

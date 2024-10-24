@@ -92,6 +92,7 @@ public class HomePage {
         return this;
     }
 
+    @Step("Check that categories are visible on left side bar")
     public HomePage checkThatCategoriesAreVisibleOnLeftSideBar() {
         Assert.assertEquals(driver.element().getTextOf(leftSideBar), "CATEGORY");
         return this;
@@ -110,6 +111,8 @@ public class HomePage {
     }
 
     /*********************************  Actions  *****************************************************/
+
+    @Step("Check that user can click on Cart button")
     public ViewCartPage clickOnCartButton() {
         driver.element().click(cart);
         return new ViewCartPage(driver);
@@ -197,11 +200,13 @@ public class HomePage {
         return new LoginSignupPage(driver);
     }
 
+    @Step("Check that user can click on Women category")
     public HomePage clickOnWomenCategory() {
         driver.element().click(womenCategory);
         return this;
     }
 
+    @Step("Check that user can click on Tops Women category")
     public WomenProductPage clickOnTopsWomenCategory() {
         driver.element().click(topsWomenCategory);
         return new WomenProductPage(driver);

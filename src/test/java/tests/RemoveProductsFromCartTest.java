@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
-public class RemoveProductsFromCart {
+public class RemoveProductsFromCartTest {
     public Driver driver;
 
     @BeforeClass
@@ -21,7 +21,7 @@ public class RemoveProductsFromCart {
                 .clickOnLoginButton()
                 .checkThatLoggedInAsUsernameIsDisplayed("Doaa")
                 .clickOnFirstAddToCartButton().clickOnCartLink()
-                .checkThatViewCartPageIsLoadedSuccessfully().clickOnremoveProductBtn()
+                .checkThatViewCartPageIsLoadedSuccessfully().clickOnRemoveProductBtn()
                 .checkThatProductRemovedFromTheCartSuccessfully();
 
 

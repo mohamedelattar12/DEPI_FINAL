@@ -8,7 +8,7 @@ import pages.HomePage;
 
 import java.time.Duration;
 
-public class RegisterBeforeCheckout {
+public class RegisterBeforeCheckoutTest {
     public Driver driver;
 
     @BeforeClass

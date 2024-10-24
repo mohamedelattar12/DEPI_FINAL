@@ -8,7 +8,7 @@ import pages.HomePage;
 
 import java.time.Duration;
 
-public class SearchProductsAndVerifyCartAfterLogin {
+public class SearchProductsAndVerifyCartAfterLoginTest {
     public Driver driver;
 
     @BeforeClass

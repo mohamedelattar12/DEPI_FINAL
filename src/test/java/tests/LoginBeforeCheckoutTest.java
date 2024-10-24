@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
-public class LoginBeforeCheckout {
+public class LoginBeforeCheckoutTest {
     public Driver driver;
 
     @BeforeClass
